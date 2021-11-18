@@ -1,0 +1,14 @@
+<resources>
+
+    <string name="app_name">Hysi</string>
+    <string name="app_subtitle">«Have You Seen It?»</string>
+
+    <!-- Textos de la pantalla de login -->
+    <string name="login_username">Nombre de usuario</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_entrar">Entrar</string>
+    <string name="login_no_tienes_cuenta">¿No tienes cuenta?</string>
+    <string name="login_registrate">Regístrate</string>
+    <string name="login_error">Nombre de usuario y/o contraseña incorrectos</string>
+
+</resources>
