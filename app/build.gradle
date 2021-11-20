@@ -7,8 +7,8 @@ android {
 
     defaultConfig {
         applicationId "com.example.hysi"
-        minSdk 30
-        targetSdk 30
+        minSdk 26
+        targetSdk 26
         versionCode 1
         versionName "1.0"
 
