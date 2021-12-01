@@ -1,4 +1,4 @@
-package com.example.hysi;
+package com.example.hysi.actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hysi.R;
+import com.example.hysi.modelo.BaseDatos;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -22,8 +24,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         enlazarControles();
-
-
     }
 
     private void enlazarControles() {
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             error.show();
         }
-        BaseDatos.ejemplo();
+        BaseDatos.consultaPrueba();
     }
 
     private void irARegistro() {
