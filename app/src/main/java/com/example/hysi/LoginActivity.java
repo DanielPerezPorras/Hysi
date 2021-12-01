@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsuario;
@@ -20,6 +22,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         enlazarControles();
+
+
     }
 
     private void enlazarControles() {
@@ -46,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             error.show();
         }
+        BaseDatos.ejemplo();
     }
 
     private void irARegistro() {
