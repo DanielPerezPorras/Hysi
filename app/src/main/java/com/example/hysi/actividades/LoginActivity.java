@@ -4,19 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.hysi.R;
-import com.example.hysi.modelo.BaseDatos;
+import com.example.hysi.modelo.Usuario;
 
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsuario;
     private EditText etContrasenia;
-    private Context appCtxt;
     private Toast error;
 
     @Override
@@ -37,24 +37,25 @@ public class LoginActivity extends AppCompatActivity {
         Button btnRegistrate = findViewById(R.id.btnRegistrate);
         btnRegistrate.setOnClickListener(v -> irARegistro());
 
-        appCtxt = getApplicationContext();
+        Context appCtxt = getApplicationContext();
         error = Toast.makeText(appCtxt, R.string.login_error, Toast.LENGTH_SHORT);
 
     }
 
     private void validarLogin() {
-        String usuario = etUsuario.getText().toString();
+        String nombreUsuario = etUsuario.getText().toString();
         String contrasenia = etContrasenia.getText().toString();
-        if (false) {
-            // hacer el login
+        Usuario usuario = Usuario.findByUsuarioAndPassword(nombreUsuario, contrasenia);
+        if (usuario != null) {
+            Log.i("Hysi", "intento de login exitoso");
+            // TODO Almacenar los datos del usuario y pasar a otra actividad
         } else {
             error.show();
         }
-        BaseDatos.consultaPrueba();
     }
 
     private void irARegistro() {
-
+        // TODO Pasar a la actividad para registrar una nueva cuenta
     }
 
 }

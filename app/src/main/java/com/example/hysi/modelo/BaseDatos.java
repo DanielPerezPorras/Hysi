@@ -27,6 +27,7 @@ public class BaseDatos {
                             .Builder().permitAll().build();
                     StrictMode.setThreadPolicy(policy);
                     driver = Class.forName("net.sourceforge.jtds.jdbc.Driver").newInstance();
+                    Log.i("Hysi", "Creada nueva instancia del driver");
                 }
                 conexion = DriverManager.getConnection(CADENA_CONEXION);
             }
