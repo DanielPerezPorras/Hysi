@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actividades.LoginActivity">
+    tools:context=".actividades.RegistroActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -14,56 +14,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="@dimen/outer_padding"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:padding="@dimen/outer_padding">
 
             <TextView
-                android:id="@+id/txtTitulo"
-                android:layout_width="wrap_content"
+                android:id="@+id/txtTituloRegistro"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/app_name"
+                android:text="@string/registro_titulo"
+                android:textAlignment="center"
                 android:textSize="34sp" />
-
-            <TextView
-                android:id="@+id/txtSubtitulo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/app_subtitle"
-                android:textSize="20sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="16dp" />
-
-            <TextView
-                android:id="@+id/txtDescripcion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/description"
-                android:textAlignment="center" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="64dp" />
 
             <TextView
-                android:id="@+id/txtUsuario"
+                android:id="@+id/txtUsuarioRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:labelFor="@id/txtTitulo"
                 android:text="@string/login_username" />
 
             <EditText
-                android:id="@+id/etUsuario"
+                android:id="@+id/etUsuarioRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -76,18 +53,41 @@
                 android:layout_height="32dp" />
 
             <TextView
-                android:id="@+id/txtContrasenia"
+                android:id="@+id/txtContraseniaRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:labelFor="@id/txtTitulo"
                 android:text="@string/login_password" />
 
             <EditText
-                android:id="@+id/etContrasenia"
+                android:id="@+id/etContraseniaRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPassword"
+                android:inputType="textPersonName"
                 android:minHeight="48dp"
+                android:password="true"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+            <TextView
+                android:id="@+id/txtContraseniaRegistro2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/txtTitulo"
+                android:text="@string/registro_rep_password" />
+
+            <EditText
+                android:id="@+id/etContraseniaRegistro2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:password="true"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Space
@@ -95,27 +95,30 @@
                 android:layout_height="32dp" />
 
             <Button
-                android:id="@+id/btnEntrar"
+                android:id="@+id/btnRegistrarse"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_entrar" />
+                android:layout_gravity="center"
+                android:text="@string/registro_confirmar" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="64dp" />
 
             <TextView
-                android:id="@+id/txtNoTienesCuenta"
+                android:id="@+id/txtYaTienesCuenta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_no_tienes_cuenta" />
+                android:layout_gravity="center"
+                android:text="@string/registro_ya_tienes_cuenta" />
 
             <Button
-                android:id="@+id/btnRegistrate"
+                android:id="@+id/btnLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_registrate" />
+                android:layout_gravity="center"
+                android:text="@string/registro_login" />
         </LinearLayout>
-
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,6 +2,7 @@
 
     <string name="app_name">Hysi</string>
     <string name="app_subtitle">«Have You Seen It?»</string>
+    <string name="description">Encuentra objetos que perdiste y ayuda a otros a encontrar lo que perdieron</string>
 
     <!-- Textos de la pantalla de login -->
     <string name="login_username">Nombre de usuario</string>
@@ -10,5 +11,20 @@
     <string name="login_no_tienes_cuenta">¿No tienes cuenta?</string>
     <string name="login_registrate">Regístrate</string>
     <string name="login_error">Nombre de usuario y/o contraseña incorrectos</string>
+
+    <!-- Textos de la pantalla de registro -->
+    <string name="registro_titulo">Regístrate en Hysi</string>
+    <string name="registro_rep_password">Repite tu contraseña</string>
+    <string name="registro_confirmar">Registrarme</string>
+    <string name="registro_ya_tienes_cuenta">¿Ya tienes una cuenta?</string>
+    <string name="registro_login">Iniciar sesión</string>
+    <string name="registro_error_usuario_vacio">El nombre de usuario está en blanco.</string>
+    <string name="registro_error_contrasenia_vacia">La contraseña está en blanco.</string>
+    <string name="registro_error_contrasenias">Las contraseñas no coinciden</string>
+    <string name="registro_error_usuario_en_uso">El nombre de usuario ya está en uso. Elige otro.</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 </resources>
