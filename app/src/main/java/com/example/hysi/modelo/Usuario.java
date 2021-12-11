@@ -16,11 +16,13 @@ public class Usuario {
     private final int id;
     private final String usuario;
     private final String password;
+    private final String calle;
 
-    private Usuario(int id, String usuario, String password) {
+    private Usuario(int id, String usuario, String password, String calle) {
         this.id = id;
         this.usuario = usuario;
         this.password = password;
+        this.calle = calle;
     }
 
     /**
@@ -40,7 +42,8 @@ public class Usuario {
             if (rs.next()) {
                 resultado = new Usuario(id,
                         rs.getString("usuario"),
-                        rs.getString("password"));
+                        rs.getString("password"),
+                        rs.getString("calle"));
             }
 
             BaseDatos.cerrarConexion();
@@ -69,7 +72,8 @@ public class Usuario {
             if (rs.next()) {
                 resultado = new Usuario(rs.getInt("ID"),
                         usuario,
-                        password);
+                        password,
+                        rs.getString("calle"));
             }
 
             BaseDatos.cerrarConexion();
@@ -96,7 +100,8 @@ public class Usuario {
             if (rs.next()) {
                 resultado = new Usuario(rs.getInt("id"),
                         usuario,
-                        rs.getString("password"));
+                        rs.getString("password"),
+                        rs.getString("calle"));
             }
 
             BaseDatos.cerrarConexion();
@@ -112,19 +117,20 @@ public class Usuario {
      * @param contrasenia La contraseña del nuevo usuario.
      * @return Representación del nuevo usuario, si se ha creado correctamente.
      */
-    public static Usuario crear(String usuario, String contrasenia) {
+    public static Usuario crear(String usuario, String contrasenia, String calle) {
         try {
             Connection conex = BaseDatos.getConexion();
             PreparedStatement stmt = conex.prepareStatement(
-                    "INSERT INTO USUARIO (usuario, password) VALUES (?, ?)",
+                    "INSERT INTO USUARIO (usuario, password, calle) VALUES (?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, usuario);
             stmt.setString(2, contrasenia);
+            stmt.setString(3, calle);
 
             stmt.executeUpdate();
             ResultSet rskey = stmt.getGeneratedKeys();
-            stmt.getGeneratedKeys().next();
-            Usuario resultado = new Usuario(rskey.getInt("id"), usuario, contrasenia);
+            rskey.next();
+            Usuario resultado = new Usuario(rskey.getInt("id"), usuario, contrasenia, calle);
 
             BaseDatos.cerrarConexion();
             return resultado;
@@ -136,15 +142,12 @@ public class Usuario {
     public int getId() {
         return id;
     }
-
     public String getUsuario() {
         return usuario;
     }
-
     public String getPassword() {
         return password;
     }
-
-
+    public String getCalle() { return calle; }
 
 }

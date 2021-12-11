@@ -18,6 +18,7 @@ public class RegistroActivity extends AppCompatActivity {
     private EditText etUsuario;
     private EditText etContrasenia1;
     private EditText etContrasenia2;
+    private EditText etCalle;
     private Toast error;
 
     private SingletonMap singletonMap;
@@ -35,6 +36,7 @@ public class RegistroActivity extends AppCompatActivity {
         etUsuario = findViewById(R.id.etUsuarioRegistro);
         etContrasenia1 = findViewById(R.id.etContraseniaRegistro);
         etContrasenia2 = findViewById(R.id.etContraseniaRegistro2);
+        etCalle = findViewById(R.id.etCalleRegistro);
 
         Button btnConfirmar = findViewById(R.id.btnRegistrarse);
         btnConfirmar.setOnClickListener(v -> validarRegistro());
@@ -51,11 +53,15 @@ public class RegistroActivity extends AppCompatActivity {
         String nombreUsuario = etUsuario.getText().toString().replaceAll("\\s", "");
         String contrasenia1 = etContrasenia1.getText().toString();
         String contrasenia2 = etContrasenia2.getText().toString();
+        String calle = etCalle.getText().toString();
         if (nombreUsuario.isEmpty()) {
             error.setText(R.string.registro_error_usuario_vacio);
             error.show();
         } else if (contrasenia1.isEmpty() || contrasenia2.isEmpty()) {
             error.setText(R.string.registro_error_contrasenia_vacia);
+            error.show();
+        } else if (calle.isEmpty()) {
+            error.setText(R.string.registro_error_calle_vacia);
             error.show();
         } else if (!contrasenia1.equals(contrasenia2)) {
             error.setText(R.string.registro_error_contrasenias);
@@ -64,7 +70,7 @@ public class RegistroActivity extends AppCompatActivity {
             error.setText(R.string.registro_error_usuario_en_uso);
             error.show();
         } else {
-            Usuario nuevoUsuario = Usuario.crear(nombreUsuario, contrasenia1);
+            Usuario nuevoUsuario = Usuario.crear(nombreUsuario, contrasenia1, calle);
             singletonMap.put("session", nuevoUsuario);
             irAPrincipal();
         }

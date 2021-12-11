@@ -71,7 +71,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="32dp" />
+                android:layout_height="16dp" />
 
             <TextView
                 android:id="@+id/txtContraseniaRegistro2"
@@ -88,6 +88,27 @@
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
                 android:password="true"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+            <TextView
+                android:id="@+id/txtContraseniaRegistro3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/txtTitulo"
+                android:text="@string/registro_calle" />
+
+            <EditText
+                android:id="@+id/etCalleRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:password="false"
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <Space
