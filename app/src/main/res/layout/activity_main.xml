@@ -11,13 +11,16 @@
         android:layout_height="71dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-2dp">
+        tools:layout_editor_absoluteX="-2dp"
+        tools:ignore="MissingConstraints">
 
         <Button
             android:id="@+id/btnAnyadirAnuncio"
             android:layout_width="wrap_content"
             android:layout_height="85dp"
-            android:text="AÑADIR" />
+            android:text="AÑADIR"
+            android:onClick="ejecutarAnyadirAnuncio"
+            />
 
         <Button
             android:id="@+id/btnEntrar5"
