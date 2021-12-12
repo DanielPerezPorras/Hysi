@@ -8,13 +8,7 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+        android:layout_height="match_parent"/>
 
     <LinearLayout
         android:layout_width="337dp"
@@ -27,6 +21,7 @@
             android:id="@+id/txtTituloRegistro2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Nuevo Anuncio"
             android:textAlignment="center"
             android:textSize="34sp"
             tools:text="Nuevo anuncio" />
@@ -47,6 +42,65 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción:" />
+
+        <EditText
+            android:id="@+id/descripcion_anyadir_anuncio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lo perdí en..." />
+
+        <EditText
+            android:id="@+id/perdi_en_anyadir_anuncio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dejar en..." />
+
+        <EditText
+            android:id="@+id/dejar_en_anyadir_anuncio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Categoría:" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
+
+        <Button
+            android:id="@+id/anyadir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AÑADIR"
+            android:onClick="crear"/>
 
     </LinearLayout>
 

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Categoria {
 
@@ -13,6 +15,30 @@ public class Categoria {
     public Categoria(int id, String nombre) {
         this.id = id;
         this.nombre = nombre;
+    }
+
+    public static ArrayList<Categoria> getCategorias(){
+        try {
+            Connection conex = BaseDatos.getConexion();
+            PreparedStatement stmt = conex.prepareStatement(
+                    "SELECT * FROM CATEGORIA");
+
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Categoria> categorias = new ArrayList<>();
+
+            while(rs.next()){
+                Categoria c = new Categoria(    rs.getInt("id"),
+                                                rs.getString("nombre"));
+                categorias.add(c);
+                System.out.println(c.getNombre());
+            }
+
+            BaseDatos.cerrarConexion();
+            return categorias;
+
+        } catch (SQLException ex) {
+            throw new ConsultaBDException(ex);
+        }
     }
 
     /**
@@ -38,4 +64,12 @@ public class Categoria {
             throw new ConsultaBDException(ex);
         }
     }
+
+    public int getId() {
+        return id;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+
 }

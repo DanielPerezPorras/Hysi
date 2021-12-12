@@ -18,18 +18,18 @@ import java.sql.Statement;
 
 public class Anuncio {
     private final int id;
-    private final String autor;
+    private final int autor;
     private final String titulo;
     private final String descripcion;
     private final String dejar_en;
     private final String lo_perdi_en;
-    private final boolean resuelto;
+    private final int resuelto;
     private final double latitud;
     private final double longitud;
     private final int categoria;
 
 
-    public Anuncio(int id, String autor, String titulo, String descripcion, String dejar_en, String lo_perdi_en, boolean resuelto, double latitud, double longitud, int categoria) {
+    public Anuncio(int id, int autor, String titulo, String descripcion, String dejar_en, String lo_perdi_en, int resuelto, double latitud, double longitud, int categoria) {
         this.id = id;
         this.autor = autor;
         this.titulo = titulo;
@@ -56,12 +56,12 @@ public class Anuncio {
 
             if (rs.next()) {
                 resultado = new Anuncio(id,
-                        rs.getString("autor"),
+                        rs.getInt("autor"),
                         rs.getString("titulo"),
                         rs.getString("descripcion"),
                         rs.getString( "dejar_en"),
                         rs.getString("lo_perdi_en"),
-                        rs.getBoolean("resuelto"),
+                        rs.getInt("resuelto"),
                         rs.getDouble("latitud"),
                         rs.getDouble("longitud"),
                         rs.getInt("categoria"));
@@ -88,12 +88,12 @@ public class Anuncio {
 
             if (rs.next()) {
                     resultado = new Anuncio(rs.getInt("ID"),
-                            rs.getString("autor"),
+                            rs.getInt("autor"),
                             titulo,
                             rs.getString("descripcion"),
                             rs.getString( "dejar_en"),
                             rs.getString("lo_perdi_en"),
-                            rs.getBoolean("resuelto"),
+                            rs.getInt("resuelto"),
                             rs.getDouble("latitud"),
                             rs.getDouble("longitud"),
                             rs.getInt("categoria"));
@@ -110,7 +110,7 @@ public class Anuncio {
     /**
      * Crea un nuevo anuncio en la base de datos y lo devuelve.
      */
-    public static Anuncio crear(Context contexto, String autor, String titulo, String descripcion, String dejar_en, String lo_perdi_en, boolean resuelto, int categoria) {
+    public static Anuncio crear(Context contexto, String titulo, String descripcion, String dejar_en, String lo_perdi_en, int categoria) {
         try {
             /*
             * Obtengo latitud y longitud con Geocode
@@ -118,17 +118,28 @@ public class Anuncio {
             LatLng lat_long = GeocodeUtils.coordenadasAPartirDeCalle(contexto, lo_perdi_en);
             double longitud = lat_long.longitude;
             double latitud = lat_long.latitude;
+            /*
+            * Obtengo id del usuario que crea el anuncio, es decir, el que tiene iniciada la sesión
+            * */
+            Usuario usuario = (Usuario) SingletonMap.getInstance().get("session");
+            int autor = usuario.getId();
+
+            /*
+            * En principio, el anuncio estará no resuelto (false)
+            * */
+            int resuelto = 0;
+
 
             Connection conex = BaseDatos.getConexion();
             PreparedStatement stmt = conex.prepareStatement(
                     "INSERT INTO ANUNCIO (autor, titulo, descripcion, dejar_en, lo_perdi_en, resuelto, latitud, longitud, categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                     Statement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, autor);
+            stmt.setInt(1, autor);
             stmt.setString(2, titulo);
             stmt.setString(3, descripcion);
             stmt.setString(4, dejar_en);
             stmt.setString(5, lo_perdi_en);
-            stmt.setBoolean(6, resuelto);
+            stmt.setInt(6, resuelto);
             stmt.setDouble(7, latitud);
             stmt.setDouble(8, longitud);
             stmt.setInt(9, categoria);
@@ -151,7 +162,7 @@ public class Anuncio {
             PreparedStatement stmt = conex.prepareStatement(
                     "UPDATE ANUNCIO SET resuelto=? WHERE id=? VALUES (?,?)",
                     Statement.RETURN_GENERATED_KEYS);
-            stmt.setBoolean(1, true);
+            stmt.setInt(1, 1);
             stmt.setInt(2, anuncio);
 
             stmt.executeUpdate();
