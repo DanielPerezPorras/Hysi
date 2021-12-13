@@ -65,6 +65,27 @@ public class Categoria {
         }
     }
 
+    public static Categoria findByNombre(String nombre) {
+        try {
+            Connection conex = BaseDatos.getConexion();
+            PreparedStatement stmt = conex.prepareStatement(
+                    "SELECT * FROM CATEGORIA WHERE nombre = ?");
+            stmt.setString(1, nombre);
+            ResultSet rs = stmt.executeQuery();
+            Categoria resultado = null;
+
+            if (rs.next()) {
+                resultado = new Categoria(rs.getInt("id"),
+                        nombre);
+            }
+
+            BaseDatos.cerrarConexion();
+            return resultado;
+        } catch (SQLException ex) {
+            throw new ConsultaBDException(ex);
+        }
+    }
+
     public int getId() {
         return id;
     }

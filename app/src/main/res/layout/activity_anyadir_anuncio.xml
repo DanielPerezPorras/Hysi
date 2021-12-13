@@ -99,8 +99,7 @@
             android:id="@+id/anyadir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="AÑADIR"
-            android:onClick="crear"/>
+            android:text="AÑADIR" />
 
     </LinearLayout>
 

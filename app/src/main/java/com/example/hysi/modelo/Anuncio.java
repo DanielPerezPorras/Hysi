@@ -110,14 +110,17 @@ public class Anuncio {
     /**
      * Crea un nuevo anuncio en la base de datos y lo devuelve.
      */
-    public static Anuncio crear(Context contexto, String titulo, String descripcion, String dejar_en, String lo_perdi_en, int categoria) {
+    public static Anuncio crear(Context contexto, String titulo, String descripcion, String dejar_en, String lo_perdi_en, String categoria) {
         try {
             /*
             * Obtengo latitud y longitud con Geocode
             * */
             LatLng lat_long = GeocodeUtils.coordenadasAPartirDeCalle(contexto, lo_perdi_en);
-            double longitud = lat_long.longitude;
-            double latitud = lat_long.latitude;
+            //System.out.println(lat_long.toString());
+            double longitud = 12;//lat_long.longitude;
+            double latitud = 13;//lat_long.latitude;
+
+
             /*
             * Obtengo id del usuario que crea el anuncio, es decir, el que tiene iniciada la sesión
             * */
@@ -129,7 +132,11 @@ public class Anuncio {
             * */
             int resuelto = 0;
 
-
+            /*
+            * Lo que me llega es el nombre de la categoria, debo pasar ese nombre a id.
+            * */
+            Categoria objetoCategoria = Categoria.findByNombre(categoria);
+            System.out.println(objetoCategoria.getId());
             Connection conex = BaseDatos.getConexion();
             PreparedStatement stmt = conex.prepareStatement(
                     "INSERT INTO ANUNCIO (autor, titulo, descripcion, dejar_en, lo_perdi_en, resuelto, latitud, longitud, categoria) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
@@ -142,12 +149,12 @@ public class Anuncio {
             stmt.setInt(6, resuelto);
             stmt.setDouble(7, latitud);
             stmt.setDouble(8, longitud);
-            stmt.setInt(9, categoria);
+            stmt.setInt(9, objetoCategoria.getId());
 
             stmt.executeUpdate();
             ResultSet rskey = stmt.getGeneratedKeys();
             rskey.next();
-            Anuncio resultado = new Anuncio(rskey.getInt("id"), autor, titulo, descripcion, dejar_en, lo_perdi_en, resuelto, latitud, longitud, categoria);
+            Anuncio resultado = new Anuncio(rskey.getInt("id"), autor, titulo, descripcion, dejar_en, lo_perdi_en, resuelto, latitud, longitud, objetoCategoria.getId());
 
             BaseDatos.cerrarConexion();
             return resultado;
