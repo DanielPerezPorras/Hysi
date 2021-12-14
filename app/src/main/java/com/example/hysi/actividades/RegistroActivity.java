@@ -4,14 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hysi.R;
+import com.example.hysi.modelo.GeocodeUtils;
 import com.example.hysi.modelo.SingletonMap;
 import com.example.hysi.modelo.Usuario;
+
+import java.io.IOException;
 
 public class RegistroActivity extends AppCompatActivity {
 
@@ -19,6 +24,7 @@ public class RegistroActivity extends AppCompatActivity {
     private EditText etContrasenia1;
     private EditText etContrasenia2;
     private EditText etCalle;
+    private TextView txtDireccion;
     private Toast error;
 
     private SingletonMap singletonMap;
@@ -29,6 +35,11 @@ public class RegistroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
         enlazarControles();
         singletonMap = SingletonMap.getInstance();
+        try {
+            GeocodeUtils.coordenadasAPartirDeCalle(this, "Avenida Dolores de aragón");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void enlazarControles() {
@@ -37,6 +48,9 @@ public class RegistroActivity extends AppCompatActivity {
         etContrasenia1 = findViewById(R.id.etContraseniaRegistro);
         etContrasenia2 = findViewById(R.id.etContraseniaRegistro2);
         etCalle = findViewById(R.id.etCalleRegistro);
+        txtDireccion = findViewById(R.id.txtDireccionRegistro);
+
+        etCalle.setOnFocusChangeListener((v, b) -> mostrarDireccion());
 
         Button btnConfirmar = findViewById(R.id.btnRegistrarse);
         btnConfirmar.setOnClickListener(v -> validarRegistro());
@@ -70,9 +84,39 @@ public class RegistroActivity extends AppCompatActivity {
             error.setText(R.string.registro_error_usuario_en_uso);
             error.show();
         } else {
-            Usuario nuevoUsuario = Usuario.crear(nombreUsuario, contrasenia1, calle);
-            singletonMap.put("session", nuevoUsuario);
-            irAPrincipal();
+            try {
+                if (GeocodeUtils.coordenadasAPartirDeCalle(this, calle) == null) {
+                    error.setText(R.string.registro_error_calle);
+                    error.show();
+                } else {
+                    Usuario nuevoUsuario = Usuario.crear(nombreUsuario, contrasenia1, calle);
+                    singletonMap.put("session", nuevoUsuario);
+                    irAPrincipal();
+                }
+            } catch (IOException e) {
+                error.setText(R.string.registro_error_calle_no_comprobada);
+                error.show();
+            }
+        }
+    }
+
+    private void mostrarDireccion() {
+        String calle = etCalle.getText().toString();
+        if (!calle.isEmpty()) {
+            try {
+                Address direccion = GeocodeUtils.direccionAPartirDeCalle(this, calle);
+                if (direccion != null) {
+                    StringBuilder builder = new StringBuilder();
+                    for (int i = 0; i <= direccion.getMaxAddressLineIndex(); i++) {
+                        builder.append(direccion.getAddressLine(i)).append("\n");
+                    }
+                    txtDireccion.setText(builder.toString());
+                } else {
+                    txtDireccion.setText(R.string.registro_calle_no_valida);
+                }
+            } catch (IOException ex) {
+                txtDireccion.setText(R.string.registro_error_calle_no_comprobada);
+            }
         }
     }
 
