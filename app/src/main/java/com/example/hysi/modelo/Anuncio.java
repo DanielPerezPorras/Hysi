@@ -117,8 +117,8 @@ public class Anuncio {
             * */
             LatLng lat_long = GeocodeUtils.coordenadasAPartirDeCalle(contexto, lo_perdi_en);
             //System.out.println(lat_long.toString());
-            double longitud = 12;//lat_long.longitude;
-            double latitud = 13;//lat_long.latitude;
+            double longitud = lat_long.longitude;
+            double latitud = lat_long.latitude;
 
 
             /*
