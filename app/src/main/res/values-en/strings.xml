@@ -4,14 +4,22 @@
     <string name="app_subtitle">«Have You Seen It?»</string>
     <string name="description">Find your lost objects and help others to find their own.</string>
     <string name="formato_direccion">Street, city</string>
-    <string name="error_calle_no_comprobada">[...]</string>
+
+    <!-- Errores varios -->
+    <string name="error_calle_no_comprobada">
+        Could not validate street. Try again later.
+    </string>
     <string name="error_calle_no_valida">Invalid city</string>
+
+    <!-- Textos de la pantalla de login -->
     <string name="login_username">Username</string>
     <string name="login_password">Password</string>
     <string name="login_entrar">Enter</string>
-    <string name="login_no_tienes_cuenta">Have you got an account?</string>
+    <string name="login_no_tienes_cuenta">Don\'t have an account?</string>
     <string name="login_registrate">Sign up</string>
     <string name="login_error">Invalid username or password</string>
+
+    <!-- Textos de la pantalla de registro -->
     <string name="registro_titulo">Sign up now on Hysi</string>
     <string name="registro_rep_password">Repeat your password</string>
     <string name="registro_calle">Address</string>
@@ -23,9 +31,12 @@
     <string name="registro_error_calle">Invalid street.</string>
     <string name="registro_error_contrasenia_vacia">Invalid password.</string>
     <string name="registro_error_contrasenias">The passwords don\'t match.</string>
-    <string name="registro_error_usuario_en_uso">[...]</string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="registro_error_usuario_en_uso">
+        The username is already in use. Choose another one.
+    </string>
+
+    <!-- Títulos de las actividades -->
+    <string name="title_activity_main">Welcome to Hysi</string>
+    <string name="title_anyadir_anuncio">Create new announcement</string>
+
 </resources>

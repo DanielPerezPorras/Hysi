@@ -33,12 +33,11 @@
     <string name="registro_error_contrasenia_vacia">La contraseña está en blanco.</string>
     <string name="registro_error_contrasenias">Las contraseñas no coinciden</string>
     <string name="registro_error_usuario_en_uso">
-        El nombre de usuario ya está en uso.
-        Elige otro.
+        El nombre de usuario ya está en uso. Elige otro.
     </string>
-    <string name="title_activity_main">MainActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
+    <!-- Títulos de las actividades -->
+    <string name="title_activity_main">Bienvenido a Hysi</string>
+    <string name="title_anyadir_anuncio">Crear nuevo anuncio</string>
 
 </resources>

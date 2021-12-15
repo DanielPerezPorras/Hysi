@@ -7,5 +7,6 @@
     <color name="orange">#FF832B</color>
     <color name="indigo">#FF4F4789</color>
     <color name="black">#FF000000</color>
+    <color name="grey_light">#858585</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

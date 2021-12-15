@@ -19,6 +19,8 @@
 
         <item name="android:colorBackground">?attr/colorSurface</item>
         <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textColorPrimary">?attr/colorOnPrimary</item>
+        <item name="android:textColorHint">@color/grey_light</item>
         <item name="android:statusBarColor">@color/yellow</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowNoTitle">true</item>
