@@ -86,7 +86,7 @@ public class RegistroActivity extends AppCompatActivity {
         } else {
             try {
                 if (GeocodeUtils.coordenadasAPartirDeCalle(this, calle) == null) {
-                    error.setText(R.string.registro_error_calle);
+                    error.setText(R.string.error_calle_no_valida);
                     error.show();
                 } else {
                     Usuario nuevoUsuario = Usuario.crear(nombreUsuario, contrasenia1, calle);
@@ -94,7 +94,7 @@ public class RegistroActivity extends AppCompatActivity {
                     irAPrincipal();
                 }
             } catch (IOException e) {
-                error.setText(R.string.registro_error_calle_no_comprobada);
+                error.setText(R.string.error_calle_no_comprobada);
                 error.show();
             }
         }
@@ -106,16 +106,12 @@ public class RegistroActivity extends AppCompatActivity {
             try {
                 Address direccion = GeocodeUtils.direccionAPartirDeCalle(this, calle);
                 if (direccion != null) {
-                    StringBuilder builder = new StringBuilder();
-                    for (int i = 0; i <= direccion.getMaxAddressLineIndex(); i++) {
-                        builder.append(direccion.getAddressLine(i)).append("\n");
-                    }
-                    txtDireccion.setText(builder.toString());
+                    txtDireccion.setText(GeocodeUtils.getNombreDireccion(direccion));
                 } else {
-                    txtDireccion.setText(R.string.registro_calle_no_valida);
+                    txtDireccion.setText(R.string.error_calle_no_valida);
                 }
             } catch (IOException ex) {
-                txtDireccion.setText(R.string.registro_error_calle_no_comprobada);
+                txtDireccion.setText(R.string.error_calle_no_comprobada);
             }
         }
     }

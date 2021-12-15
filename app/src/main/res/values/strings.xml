@@ -5,6 +5,13 @@
     <string name="description">Encuentra objetos que perdiste y ayuda a otros a encontrar lo que perdieron</string>
     <string name="formato_direccion">Calle, provincia</string>
 
+    <!-- Errores varios -->
+    <string name="error_calle_no_comprobada">
+        No se pudo comprobar que la calle es válida.
+        Vuelve a intentarlo más tarde.
+    </string>
+    <string name="error_calle_no_valida">Calle no válida</string>
+
     <!-- Textos de la pantalla de login -->
     <string name="login_username">Nombre de usuario</string>
     <string name="login_password">Contraseña</string>
@@ -20,14 +27,9 @@
     <string name="registro_confirmar">Registrarme</string>
     <string name="registro_ya_tienes_cuenta">¿Ya tienes una cuenta?</string>
     <string name="registro_login">Iniciar sesión</string>
-    <string name="registro_calle_no_valida">Calle no válida</string>
     <string name="registro_error_usuario_vacio">El nombre de usuario está en blanco.</string>
     <string name="registro_error_calle_vacia">La calle está vacía.</string>
     <string name="registro_error_calle">La calle no existe.</string>
-    <string name="registro_error_calle_no_comprobada">
-        No se pudo comprobar que la calle es válida.
-        Vuelve a intentarlo más tarde.
-    </string>
     <string name="registro_error_contrasenia_vacia">La contraseña está en blanco.</string>
     <string name="registro_error_contrasenias">Las contraseñas no coinciden</string>
     <string name="registro_error_usuario_en_uso">

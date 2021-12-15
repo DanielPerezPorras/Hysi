@@ -1,9 +1,6 @@
 package com.example.hysi.actividades;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,12 +14,12 @@ import android.widget.Toast;
 import com.example.hysi.R;
 import com.example.hysi.modelo.Anuncio;
 import com.example.hysi.modelo.Categoria;
-import com.example.hysi.modelo.SingletonMap;
-import com.example.hysi.modelo.Usuario;
+import com.example.hysi.modelo.GeocodeUtils;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
-public class AnyadirAnuncioActivity extends Activity implements AdapterView.OnItemSelectedListener{
+public class AnyadirAnuncioActivity extends Activity {
 
     private Spinner spinner;
     private EditText etTitulo;
@@ -32,9 +29,7 @@ public class AnyadirAnuncioActivity extends Activity implements AdapterView.OnIt
     private Spinner etCategoria;
     private Button btnAnyadir;
 
-    ArrayList<Categoria> listaCategorias = new ArrayList<>(Categoria.getCategorias());
-    int cont = 0;
-    private static final String[] paths = new String[Categoria.getCategorias().size()];
+    private Toast error;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,26 +39,23 @@ public class AnyadirAnuncioActivity extends Activity implements AdapterView.OnIt
     }
 
     public void rellenarSpinner(){
-        /*
-         * Necesito un String[] con los nombres de las categorias
-         * */
+
         ArrayList<Categoria> listaCategorias = Categoria.getCategorias();
-
         int length = listaCategorias.size();
-        for (int i=0;i<length;i++) {
-            System.out.println(listaCategorias.get(i).getNombre());
-            paths[cont] = listaCategorias.get(i).getNombre();
-            cont++;
-        }
-        System.out.println(paths.length);
 
-        spinner = (Spinner)findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(AnyadirAnuncioActivity.this,
-                android.R.layout.simple_spinner_item,paths);
+        // Debemos llenar un array de strings con los nombres de las categorías
+        String[] nombres = new String[length];
+        for (int i = 0; i < length; i++) {
+            nombres[i] = listaCategorias.get(i).getNombre();
+        }
+
+        spinner = findViewById(R.id.spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, nombres);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+
     }
 
     public void enlazarControles(){
@@ -73,18 +65,30 @@ public class AnyadirAnuncioActivity extends Activity implements AdapterView.OnIt
         etDejarEn = findViewById(R.id.dejar_en_anyadir_anuncio);
         etCategoria = findViewById(R.id.spinner);
         btnAnyadir = findViewById(R.id.anyadir);
-        btnAnyadir.setOnClickListener(v -> Anyadir());
+        btnAnyadir.setOnClickListener(v -> anyadir());
+
+        error = Toast.makeText(this, "", Toast.LENGTH_SHORT);
     }
 
-    public void Anyadir(){
-        /*AVERIGUAMOS ID DE LA CATEGORIA*/
-        System.out.println(etTitulo.getText().toString());
-        System.out.println(etDescripcion.getText().toString());
-        System.out.println(etLoPerdiEn.getText().toString());
-        System.out.println(etDejarEn.getText().toString());
-        System.out.println(etCategoria.getSelectedItem().toString());
-        Anuncio a = Anuncio.crear(this, etTitulo.getText().toString(), etDescripcion.getText().toString(), etLoPerdiEn.getText().toString(), etDejarEn.getText().toString(), etCategoria.getSelectedItem().toString() );
-        irAPrincipal();
+    public void anyadir(){
+        String loPerdiEn = etLoPerdiEn.getText().toString();
+        String dejarEn = etDejarEn.getText().toString();
+        try {
+            if (GeocodeUtils.coordenadasAPartirDeCalle(this, loPerdiEn) == null
+            || GeocodeUtils.coordenadasAPartirDeCalle(this, dejarEn) == null) {
+                error.setText(R.string.error_calle_no_valida);
+                error.show();
+            } else {
+                Anuncio a = Anuncio.crear(this,
+                        etTitulo.getText().toString(),
+                        etDescripcion.getText().toString(),
+                        loPerdiEn, dejarEn,
+                        etCategoria.getSelectedItem().toString() );
+                irAPrincipal();
+            }
+        } catch (IOException ex) {
+            error.setText(R.string.error_calle_no_comprobada);
+        }
     }
 
     private void irAPrincipal() {
@@ -93,24 +97,4 @@ public class AnyadirAnuncioActivity extends Activity implements AdapterView.OnIt
         finish();
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        switch (position) {
-            case 0:
-                // Whatever you want to happen when the first item gets selected
-                break;
-            case 1:
-                // Whatever you want to happen when the second item gets selected
-                break;
-            case 2:
-                // Whatever you want to happen when the thrid item gets selected
-                break;
-
-        }
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 }

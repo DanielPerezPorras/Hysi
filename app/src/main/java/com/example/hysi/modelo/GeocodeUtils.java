@@ -22,15 +22,19 @@ public class GeocodeUtils {
      *      calle es la cadena vacía.
      */
     public static LatLng coordenadasAPartirDeCalle(Context ctxt, String calle) throws IOException {
-        Geocoder geocoder = new Geocoder(ctxt, Locale.getDefault());
-        List<Address> direcciones = geocoder.getFromLocationName(calle, 10);
-        if (direcciones != null && direcciones.size() > 0) {
-            for (Address addr : direcciones) {
-                Log.i("Hysi", addr.getAddressLine(0)
-                        + " (" + addr.getLatitude() + ", " +  addr.getLongitude() + ")");
+        if (calle != null && !calle.isEmpty()) {
+            Geocoder geocoder = new Geocoder(ctxt, Locale.getDefault());
+            List<Address> direcciones = geocoder.getFromLocationName(calle, 10);
+            if (direcciones != null && direcciones.size() > 0) {
+                for (Address addr : direcciones) {
+                    Log.i("Hysi", addr.getAddressLine(0)
+                            + " (" + addr.getLatitude() + ", " +  addr.getLongitude() + ")");
+                }
+                Address miDireccion = direcciones.get(0);
+                return new LatLng(miDireccion.getLatitude(), miDireccion.getLongitude());
+            } else {
+                return null;
             }
-            Address miDireccion = direcciones.get(0);
-            return new LatLng(miDireccion.getLatitude(), miDireccion.getLongitude());
         } else {
             return null;
         }
@@ -45,13 +49,25 @@ public class GeocodeUtils {
      *      calle es la cadena vacía.
      */
     public static Address direccionAPartirDeCalle(Context ctxt, String calle) throws IOException {
-        Geocoder geocoder = new Geocoder(ctxt, Locale.getDefault());
-        List<Address> direcciones = geocoder.getFromLocationName(calle, 10);
-        if (direcciones != null && direcciones.size() > 0) {
-            return direcciones.get(0);
+        if (calle != null && !calle.isEmpty()) {
+            Geocoder geocoder = new Geocoder(ctxt, Locale.getDefault());
+            List<Address> direcciones = geocoder.getFromLocationName(calle, 10);
+            if (direcciones != null && direcciones.size() > 0) {
+                return direcciones.get(0);
+            } else {
+                return null;
+            }
         } else {
             return null;
         }
+    }
+
+    public static String getNombreDireccion(Address addr) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i <= addr.getMaxAddressLineIndex(); i++) {
+            builder.append(addr.getAddressLine(i)).append("\n");
+        }
+        return builder.toString();
     }
 
 }
