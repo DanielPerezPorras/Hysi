@@ -23,12 +23,12 @@
     <!-- Textos de la pantalla de registro -->
     <string name="registro_titulo">Regístrate en Hysi</string>
     <string name="registro_rep_password">Repite tu contraseña</string>
-    <string name="registro_calle">Dirección en la que vives</string>
+    <string name="registro_calle">Dirección</string>
     <string name="registro_confirmar">Registrarme</string>
     <string name="registro_ya_tienes_cuenta">¿Ya tienes una cuenta?</string>
     <string name="registro_login">Iniciar sesión</string>
-    <string name="registro_error_usuario_vacio">El nombre de usuario está en blanco.</string>
-    <string name="registro_error_calle_vacia">La calle está vacía.</string>
+    <string name="registro_error_usuario_vacio">El nombre de usuario no es válido.</string>
+    <string name="registro_error_calle_vacia">Introduzca una calle.</string>
     <string name="registro_error_calle">La calle no existe.</string>
     <string name="registro_error_contrasenia_vacia">La contraseña está en blanco.</string>
     <string name="registro_error_contrasenias">Las contraseñas no coinciden</string>
