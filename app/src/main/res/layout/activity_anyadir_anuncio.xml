@@ -8,100 +8,138 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:layout_width="337dp"
-        android:layout_height="597dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="40dp"
-        tools:layout_editor_absoluteY="48dp">
-
-        <TextView
-            android:id="@+id/txtTituloRegistro2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nuevo Anuncio"
-            android:textAlignment="center"
-            android:textSize="34sp"
-            tools:text="Nuevo anuncio" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/outer_padding">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="64dp" />
+            <TextView
+                android:id="@+id/txtTituloRegistro2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/anyadir_anuncio_titulo"
+                android:textAlignment="center"
+                android:textSize="34sp"
+                tools:text="Nuevo anuncio" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Título:" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="64dp" />
 
-        <EditText
-            android:id="@+id/titulo_anyadir_anuncio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/anyadir_anuncio_campo_titulo" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Descripción:" />
+            <EditText
+                android:id="@+id/titulo_anyadir_anuncio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:minHeight="48dp" />
 
-        <EditText
-            android:id="@+id/descripcion_anyadir_anuncio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Lo perdí en..." />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/anyadir_anuncio_descripcion" />
 
-        <EditText
-            android:id="@+id/perdi_en_anyadir_anuncio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/formato_direccion"
-            android:inputType="textPersonName" />
+            <EditText
+                android:id="@+id/descripcion_anyadir_anuncio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:minHeight="48dp" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dejar en..." />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
 
-        <EditText
-            android:id="@+id/dejar_en_anyadir_anuncio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/anyadir_anuncio_lo_perdi_en" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Categoría:" />
+            <EditText
+                android:id="@+id/perdi_en_anyadir_anuncio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/formato_direccion"
+                android:minHeight="48dp" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"/>
+            <TextView
+                android:id="@+id/txtDireccionLoPerdiEn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/anyadir"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="AÑADIR" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/anyadir_anuncio_dejar_en" />
+
+            <EditText
+                android:id="@+id/dejar_en_anyadir_anuncio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/formato_direccion"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/txtDireccionDejarEn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/anyadir_anuncio_categoria" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:drawable/btn_dropdown"
+                android:spinnerMode="dropdown" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="64dp" />
+
+            <Button
+                android:id="@+id/anyadir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/anyadir_anuncio_anyadir" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

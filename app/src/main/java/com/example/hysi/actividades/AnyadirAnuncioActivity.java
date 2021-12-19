@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hysi.R;
@@ -26,6 +27,8 @@ public class AnyadirAnuncioActivity extends Activity {
     private EditText etDescripcion;
     private EditText etLoPerdiEn;
     private EditText etDejarEn;
+    private TextView txtDireccionLoPerdiEn;
+    private TextView txtDireccionDejarEn;
     private Spinner etCategoria;
     private Button btnAnyadir;
 
@@ -63,9 +66,16 @@ public class AnyadirAnuncioActivity extends Activity {
         etDescripcion = findViewById(R.id.descripcion_anyadir_anuncio);
         etLoPerdiEn = findViewById(R.id.perdi_en_anyadir_anuncio);
         etDejarEn = findViewById(R.id.dejar_en_anyadir_anuncio);
+        txtDireccionLoPerdiEn = findViewById(R.id.txtDireccionLoPerdiEn);
+        txtDireccionDejarEn = findViewById(R.id.txtDireccionDejarEn);
         etCategoria = findViewById(R.id.spinner);
         btnAnyadir = findViewById(R.id.anyadir);
         btnAnyadir.setOnClickListener(v -> anyadir());
+
+        etLoPerdiEn.setOnFocusChangeListener((v, b)
+                -> GeocodeUtils.mostrarDireccionDesdeEditText(this, etLoPerdiEn, txtDireccionLoPerdiEn));
+        etDejarEn.setOnFocusChangeListener((v, b)
+                -> GeocodeUtils.mostrarDireccionDesdeEditText(this, etDejarEn, txtDireccionDejarEn));
 
         error = Toast.makeText(this, "", Toast.LENGTH_SHORT);
     }

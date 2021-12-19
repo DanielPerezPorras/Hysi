@@ -35,11 +35,6 @@ public class RegistroActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registro);
         enlazarControles();
         singletonMap = SingletonMap.getInstance();
-        try {
-            GeocodeUtils.coordenadasAPartirDeCalle(this, "Avenida Dolores de aragón");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private void enlazarControles() {
@@ -50,7 +45,8 @@ public class RegistroActivity extends AppCompatActivity {
         etCalle = findViewById(R.id.etCalleRegistro);
         txtDireccion = findViewById(R.id.txtDireccionRegistro);
 
-        etCalle.setOnFocusChangeListener((v, b) -> mostrarDireccion());
+        etCalle.setOnFocusChangeListener((v, b)
+                -> GeocodeUtils.mostrarDireccionDesdeEditText(this, etCalle, txtDireccion));
 
         Button btnConfirmar = findViewById(R.id.btnRegistrarse);
         btnConfirmar.setOnClickListener(v -> validarRegistro());
@@ -96,22 +92,6 @@ public class RegistroActivity extends AppCompatActivity {
             } catch (IOException e) {
                 error.setText(R.string.error_calle_no_comprobada);
                 error.show();
-            }
-        }
-    }
-
-    private void mostrarDireccion() {
-        String calle = etCalle.getText().toString();
-        if (!calle.isEmpty()) {
-            try {
-                Address direccion = GeocodeUtils.direccionAPartirDeCalle(this, calle);
-                if (direccion != null) {
-                    txtDireccion.setText(GeocodeUtils.getNombreDireccion(direccion));
-                } else {
-                    txtDireccion.setText(R.string.error_calle_no_valida);
-                }
-            } catch (IOException ex) {
-                txtDireccion.setText(R.string.error_calle_no_comprobada);
             }
         }
     }

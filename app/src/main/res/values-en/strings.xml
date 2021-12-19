@@ -35,6 +35,15 @@
         The username is already in use. Choose another one.
     </string>
 
+    <!-- Textos de la pantalla «Añadir anuncio» -->
+    <string name="anyadir_anuncio_titulo">New Announcement</string>
+    <string name="anyadir_anuncio_campo_titulo">Title</string>
+    <string name="anyadir_anuncio_descripcion">Description</string>
+    <string name="anyadir_anuncio_lo_perdi_en">Where did you lose it?</string>
+    <string name="anyadir_anuncio_dejar_en">When found, leave it here:</string>
+    <string name="anyadir_anuncio_categoria">Category</string>
+    <string name="anyadir_anuncio_anyadir">Create Announcement</string>
+
     <!-- Títulos de las actividades -->
     <string name="title_activity_main">Welcome to Hysi</string>
     <string name="title_anyadir_anuncio">Create new announcement</string>

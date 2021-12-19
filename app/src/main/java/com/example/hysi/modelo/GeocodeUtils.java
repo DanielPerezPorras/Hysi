@@ -4,7 +4,10 @@ import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.util.Log;
+import android.widget.EditText;
+import android.widget.TextView;
 
+import com.example.hysi.R;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.IOException;
@@ -68,6 +71,22 @@ public class GeocodeUtils {
             builder.append(addr.getAddressLine(i)).append("\n");
         }
         return builder.toString();
+    }
+
+    public static void mostrarDireccionDesdeEditText(Context ctxt, EditText editText, TextView target) {
+        String calle = editText.getText().toString();
+        if (!calle.isEmpty()) {
+            try {
+                Address direccion = GeocodeUtils.direccionAPartirDeCalle(ctxt, calle);
+                if (direccion != null) {
+                    target.setText(GeocodeUtils.getNombreDireccion(direccion));
+                } else {
+                    target.setText(R.string.error_calle_no_valida);
+                }
+            } catch (IOException ex) {
+                target.setText(R.string.error_calle_no_comprobada);
+            }
+        }
     }
 
 }
