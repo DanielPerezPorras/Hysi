@@ -2,45 +2,114 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".actividades.MainActivity">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentoPrincipal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:name="com.example.hysi.actividades.ListaObjetosFragment" />
+
     <LinearLayout
-        android:layout_width="413dp"
-        android:layout_height="71dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/yellow"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btnAnyadirAnuncio"
+            android:id="@+id/btnListaObjetos"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
-            android:layout_height="85dp"
-            android:text="AÑADIR"
-            android:onClick="ejecutarAnyadirAnuncio"
-            />
-
-        <Button
-            android:id="@+id/btnEntrar5"
-            android:layout_width="104dp"
-            android:layout_height="85dp"
-            android:text="@string/login_entrar" />
-
-        <Button
-            android:id="@+id/btnEntrar7"
-            android:layout_width="102dp"
-            android:layout_height="85dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/login_entrar" />
+            android:width="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="@string/main_lista"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:cornerRadius="0dp"
+            app:icon="@drawable/ic_itemlist"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconSize="32dp"
+            app:iconTint="@color/black" />
 
         <Button
-            android:id="@+id/btnEntrar6"
-            android:layout_width="102dp"
-            android:layout_height="85dp"
+            android:id="@+id/btnMapa"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/login_entrar" />
+            android:width="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="@string/main_mapa"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:cornerRadius="0dp"
+            app:icon="@drawable/ic_map"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconSize="32dp"
+            app:iconTint="@color/black" />
+
+        <Button
+            android:id="@+id/btnAnyadirAnuncio"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:width="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="@string/main_anyadir"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:cornerRadius="0dp"
+            app:icon="@drawable/ic_add"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconSize="32dp"
+            app:iconTint="@color/black" />
+
+        <Button
+            android:id="@+id/btnPerfil"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:width="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
+            android:text="@string/main_perfil"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:cornerRadius="0dp"
+            app:icon="@drawable/ic_profile"
+            app:iconGravity="textTop"
+            app:iconPadding="0dp"
+            app:iconSize="32dp"
+            app:iconTint="@color/black" />
 
     </LinearLayout>
 

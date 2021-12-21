@@ -36,17 +36,26 @@
         El nombre de usuario ya está en uso. Elige otro.
     </string>
 
+    <!-- Textos de la actividad principal -->
+    <string name="main_lista">Objetos</string>
+    <string name="main_mapa">Mapa</string>
+    <string name="main_anyadir">Anunciar</string>
+    <string name="main_perfil">Mi perfil</string>
+
     <!-- Textos de la pantalla «Añadir anuncio» -->
     <string name="anyadir_anuncio_titulo">Nuevo anuncio</string>
     <string name="anyadir_anuncio_campo_titulo">Título</string>
     <string name="anyadir_anuncio_descripcion">Descripción</string>
     <string name="anyadir_anuncio_lo_perdi_en">¿Dónde lo perdiste?</string>
-    <string name="anyadir_anuncio_dejar_en">Dejar en...</string>
+    <string name="anyadir_anuncio_dejar_en">Dejar en…</string>
     <string name="anyadir_anuncio_categoria">Categoría</string>
     <string name="anyadir_anuncio_anyadir">Crear anuncio</string>
 
     <!-- Títulos de las actividades -->
     <string name="title_activity_main">Bienvenido a Hysi</string>
     <string name="title_anyadir_anuncio">Crear nuevo anuncio</string>
+    <string name="title_activity_mapa">MapaActivity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

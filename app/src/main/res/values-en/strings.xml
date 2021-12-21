@@ -35,6 +35,12 @@
         The username is already in use. Choose another one.
     </string>
 
+    <!-- Textos de la actividad principal -->
+    <string name="main_lista">Item List</string>
+    <string name="main_mapa">Map</string>
+    <string name="main_anyadir">Announce</string>
+    <string name="main_perfil">My Profile</string>
+
     <!-- Textos de la pantalla «Añadir anuncio» -->
     <string name="anyadir_anuncio_titulo">New Announcement</string>
     <string name="anyadir_anuncio_campo_titulo">Title</string>
