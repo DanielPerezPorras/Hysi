@@ -1,5 +1,7 @@
 package com.example.hysi.modelo;
 
+import com.google.maps.GeoApiContext;
+
 import java.util.HashMap;
 
 /**
@@ -18,6 +20,10 @@ public class SingletonMap extends HashMap<String, Object> {
     private SingletonMap() {
         // "session": almacena el usuario que tiene la sesión abierta
         put("session", null);
+
+        put("geoapi", new GeoApiContext.Builder()
+                .apiKey("AIzaSyBTjMvJmg0Y23keInraxHlBGUS_GbhyIfw")
+                .build());
     }
 
     public static SingletonMap getInstance() {

@@ -2,6 +2,7 @@ package com.example.hysi.modelo;
 
 
 import android.content.Context;
+import android.location.Address;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -115,10 +116,10 @@ public class Anuncio {
             /*
             * Obtengo latitud y longitud con Geocode
             * */
-            LatLng lat_long = GeocodeUtils.coordenadasAPartirDeCalle(contexto, lo_perdi_en);
+            Address address = GeocodeUtils.getAddressSync(contexto, lo_perdi_en);
             //System.out.println(lat_long.toString());
-            double longitud = lat_long.longitude;
-            double latitud = lat_long.latitude;
+            double longitud = address.getLongitude();
+            double latitud = address.getLatitude();
 
 
             /*

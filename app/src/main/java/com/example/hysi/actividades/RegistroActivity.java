@@ -81,7 +81,7 @@ public class RegistroActivity extends AppCompatActivity {
             error.show();
         } else {
             try {
-                if (GeocodeUtils.coordenadasAPartirDeCalle(this, calle) == null) {
+                if (GeocodeUtils.getAddressSync(this, calle) == null) {
                     error.setText(R.string.error_calle_no_valida);
                     error.show();
                 } else {

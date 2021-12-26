@@ -84,8 +84,8 @@ public class AnyadirAnuncioActivity extends Activity {
         String loPerdiEn = etLoPerdiEn.getText().toString();
         String dejarEn = etDejarEn.getText().toString();
         try {
-            if (GeocodeUtils.coordenadasAPartirDeCalle(this, loPerdiEn) == null
-            || GeocodeUtils.coordenadasAPartirDeCalle(this, dejarEn) == null) {
+            if (GeocodeUtils.getAddressSync(this, loPerdiEn) == null
+            || GeocodeUtils.getAddressSync(this, dejarEn) == null) {
                 error.setText(R.string.error_calle_no_valida);
                 error.show();
             } else {
@@ -98,6 +98,7 @@ public class AnyadirAnuncioActivity extends Activity {
             }
         } catch (IOException ex) {
             error.setText(R.string.error_calle_no_comprobada);
+            error.show();
         }
     }
 

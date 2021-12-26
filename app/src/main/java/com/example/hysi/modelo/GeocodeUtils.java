@@ -9,39 +9,16 @@ import android.widget.TextView;
 
 import com.example.hysi.R;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.GeoApiContext;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Consumer;
 
 public class GeocodeUtils {
 
-    /**
-     * Devuelve la latitud y longitud de una calle dada su dirección.
-     * @param ctxt El contexto de la actividad llamante.
-     * @param calle La dirección a convertir a coordenadas.
-     * @return Un objeto LatLng con las coordenadas, o null si la calle no existe.
-     * @throws IOException Si hay algún error al acceder al servicio de geocoding o
-     *      calle es la cadena vacía.
-     */
-    public static LatLng coordenadasAPartirDeCalle(Context ctxt, String calle) throws IOException {
-        if (calle != null && !calle.isEmpty()) {
-            Geocoder geocoder = new Geocoder(ctxt, Locale.getDefault());
-            List<Address> direcciones = geocoder.getFromLocationName(calle, 10);
-            if (direcciones != null && direcciones.size() > 0) {
-                for (Address addr : direcciones) {
-                    Log.i("Hysi", addr.getAddressLine(0)
-                            + " (" + addr.getLatitude() + ", " +  addr.getLongitude() + ")");
-                }
-                Address miDireccion = direcciones.get(0);
-                return new LatLng(miDireccion.getLatitude(), miDireccion.getLongitude());
-            } else {
-                return null;
-            }
-        } else {
-            return null;
-        }
-    }
+    private static GeoApiContext geoctxt = (GeoApiContext)SingletonMap.getInstance().get("geoapi");
 
     /**
      * Devuelve los datos de una calle dada su dirección.
@@ -51,10 +28,10 @@ public class GeocodeUtils {
      * @throws IOException Si hay algún error al acceder al servicio de geocoding o
      *      calle es la cadena vacía.
      */
-    public static Address direccionAPartirDeCalle(Context ctxt, String calle) throws IOException {
+    public static Address getAddressSync(Context ctxt, String calle) throws IOException {
         if (calle != null && !calle.isEmpty()) {
             Geocoder geocoder = new Geocoder(ctxt, Locale.getDefault());
-            List<Address> direcciones = geocoder.getFromLocationName(calle, 10);
+            List<Address> direcciones = geocoder.getFromLocationName(calle, 1);
             if (direcciones != null && direcciones.size() > 0) {
                 return direcciones.get(0);
             } else {
@@ -62,6 +39,35 @@ public class GeocodeUtils {
             }
         } else {
             return null;
+        }
+    }
+
+    /**
+     * Devuelve los datos de una calle dada su dirección (asíncronamente)
+     * @param ctxt El contexto de la actividad llamante.
+     * @param calle La dirección a convertir a coordenadas.
+     * @param callback Método a ejecutar cuando se obtiene respuesta de éxito,
+     *                 recibe como parámetro la dirección
+     * @param callbackError Método a ejecutar en caso de error del geocoder
+     */
+    public static void getAddress(Context ctxt, String calle,
+        Consumer<Address> callback, Consumer<IOException> callbackError) {
+        if (calle != null && !calle.isEmpty()) {
+            new Thread(
+                () -> {
+                    try {
+                        Geocoder geocoder = new Geocoder(ctxt, Locale.getDefault());
+                        List<Address> direcciones = geocoder.getFromLocationName(calle, 1);
+                        if (direcciones != null && direcciones.size() > 0) {
+                            callback.accept(direcciones.get(0));
+                        } else {
+                            callback.accept(null);
+                        }
+                    } catch (IOException ex) {
+                        callbackError.accept(ex);
+                    }
+                }
+            ).start();
         }
     }
 
@@ -75,18 +81,17 @@ public class GeocodeUtils {
 
     public static void mostrarDireccionDesdeEditText(Context ctxt, EditText editText, TextView target) {
         String calle = editText.getText().toString();
-        if (!calle.isEmpty()) {
-            try {
-                Address direccion = GeocodeUtils.direccionAPartirDeCalle(ctxt, calle);
-                if (direccion != null) {
-                    target.setText(GeocodeUtils.getNombreDireccion(direccion));
+        getAddress(ctxt, calle,
+            (address) -> {
+                if (address != null) {
+                    target.setText(GeocodeUtils.getNombreDireccion(address));
                 } else {
                     target.setText(R.string.error_calle_no_valida);
                 }
-            } catch (IOException ex) {
+            }, (exception) -> {
                 target.setText(R.string.error_calle_no_comprobada);
             }
-        }
+        );
     }
 
 }
