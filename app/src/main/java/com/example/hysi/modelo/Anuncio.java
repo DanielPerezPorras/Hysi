@@ -242,7 +242,14 @@ public class Anuncio {
             ArrayList<Anuncio> anuncios = new ArrayList<>();
 
             while(rs.next()){
-                Anuncio a = new Anuncio(rs.getInt("id"),rs.getString("titulo"),rs.getString("descripcion"),rs.getString("descripcion"),rs.getString("dejar_en"),rs.getString("lo_perdi_en"),rs.getString("categoria"));
+                Anuncio a = new Anuncio(
+                        rs.getInt("id"),
+                        rs.getString("usuario"),
+                        rs.getString("titulo"),
+                        rs.getString("descripcion"),
+                        rs.getString("dejar_en"),
+                        rs.getString("lo_perdi_en"),
+                        rs.getString("categoria"));
                 anuncios.add(a);
             }
 
@@ -272,7 +279,14 @@ public class Anuncio {
             ArrayList<Anuncio> anuncios = new ArrayList<>();
 
             while(rs.next()){
-                Anuncio a = new Anuncio(rs.getInt("id"),rs.getString("titulo"),rs.getString("descripcion"),rs.getString("descripcion"),rs.getString("dejar_en"),rs.getString("lo_perdi_en"),rs.getString("categoria"));
+                Anuncio a = new Anuncio(
+                        rs.getInt("id"),
+                        rs.getString("usuario"),
+                        rs.getString("titulo"),
+                        rs.getString("descripcion"),
+                        rs.getString("dejar_en"),
+                        rs.getString("lo_perdi_en"),
+                        rs.getString("categoria"));
                 anuncios.add(a);
             }
 

@@ -8,19 +8,17 @@
         <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/activity_mapa.xml" value="0.15921052631578947" />
         <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/activity_registro.xml" value="0.264" />
+        <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/anuncio_corto.xml" value="0.1" />
         <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/fragment_lista_objetos.xml" value="0.4" />
         <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/fragment_mapa.xml" value="0.15921052631578947" />
         <entry key="..\:/Users/andre/Downloads/PROYECTO_ANDROID_EMPOTRADOS/Hysi/app/src/main/res/layout/activity_anyadir_anuncio.xml" value="0.25" />
         <entry key="..\:/Users/andre/Downloads/PROYECTO_ANDROID_EMPOTRADOS/Hysi/app/src/main/res/layout/activity_login.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/andre/Downloads/PROYECTO_ANDROID_EMPOTRADOS/Hysi/app/src/main/res/layout/activity_main.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/andre/Downloads/PROYECTO_ANDROID_EMPOTRADOS/Hysi/app/src/main/res/layout/activity_registro.xml" value="0.23854166666666668" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/activity_anuncio.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/anuncio_corto.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/fragment_lista_objetos.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
