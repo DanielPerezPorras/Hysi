@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.hysi.R;
 import com.example.hysi.modelo.GeocodeUtils;
+import com.example.hysi.modelo.GeocodingException;
 import com.example.hysi.modelo.SingletonMap;
 import com.example.hysi.modelo.Usuario;
 
@@ -81,7 +82,7 @@ public class RegistroActivity extends AppCompatActivity {
             error.show();
         } else {
             try {
-                if (GeocodeUtils.getAddressSync(this, calle) == null) {
+                if (GeocodeUtils.getAddressSync(calle) == null) {
                     error.setText(R.string.error_calle_no_valida);
                     error.show();
                 } else {
@@ -89,7 +90,7 @@ public class RegistroActivity extends AppCompatActivity {
                     singletonMap.put("session", nuevoUsuario);
                     irAPrincipal();
                 }
-            } catch (IOException e) {
+            } catch (GeocodingException e) {
                 error.setText(R.string.error_calle_no_comprobada);
                 error.show();
             }

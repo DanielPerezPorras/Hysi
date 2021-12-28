@@ -130,12 +130,12 @@ public class Anuncio {
     /**
      * Crea un nuevo anuncio en la base de datos y lo devuelve.
      */
-    public static Anuncio crear(Context contexto, String titulo, String descripcion, String dejar_en, String lo_perdi_en, String categoria) {
+    public static Anuncio crear(String titulo, String descripcion, String dejar_en, String lo_perdi_en, String categoria) {
         try {
             /*
              * Obtengo latitud y longitud con Geocode
              * */
-            Address address = GeocodeUtils.getAddressSync(contexto, lo_perdi_en);
+            Address address = GeocodeUtils.getAddressSync(lo_perdi_en);
             //System.out.println(lat_long.toString());
             double longitud = address.getLongitude();
             double latitud = address.getLatitude();
@@ -178,7 +178,7 @@ public class Anuncio {
 
             BaseDatos.cerrarConexion();
             return resultado;
-        } catch (SQLException | IOException ex) {
+        } catch (SQLException | GeocodingException ex) {
             throw new ConsultaBDException(ex);
         }
     }

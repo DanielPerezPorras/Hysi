@@ -16,6 +16,7 @@ import com.example.hysi.R;
 import com.example.hysi.modelo.Anuncio;
 import com.example.hysi.modelo.Categoria;
 import com.example.hysi.modelo.GeocodeUtils;
+import com.example.hysi.modelo.GeocodingException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -80,23 +81,23 @@ public class AnyadirAnuncioActivity extends Activity {
         error = Toast.makeText(this, "", Toast.LENGTH_SHORT);
     }
 
-    public void anyadir(){
+    public void anyadir() {
         String loPerdiEn = etLoPerdiEn.getText().toString();
         String dejarEn = etDejarEn.getText().toString();
         try {
-            if (GeocodeUtils.getAddressSync(this, loPerdiEn) == null
-            || GeocodeUtils.getAddressSync(this, dejarEn) == null) {
+            if (GeocodeUtils.getAddressSync(loPerdiEn) == null
+            || GeocodeUtils.getAddressSync(dejarEn) == null) {
                 error.setText(R.string.error_calle_no_valida);
                 error.show();
             } else {
-                Anuncio a = Anuncio.crear(this,
+                Anuncio a = Anuncio.crear(
                         etTitulo.getText().toString(),
                         etDescripcion.getText().toString(),
                         loPerdiEn, dejarEn,
                         etCategoria.getSelectedItem().toString() );
                 irAPrincipal();
             }
-        } catch (IOException ex) {
+        } catch (GeocodingException ex) {
             error.setText(R.string.error_calle_no_comprobada);
             error.show();
         }

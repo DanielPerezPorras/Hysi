@@ -1,18 +1,19 @@
 package com.example.hysi.modelo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.location.Address;
-import android.location.Geocoder;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.hysi.R;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.errors.ApiException;
+import com.google.maps.model.GeocodingResult;
+import com.google.maps.model.LatLng;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Locale;
 import java.util.function.Consumer;
 
@@ -22,20 +23,20 @@ public class GeocodeUtils {
 
     /**
      * Devuelve los datos de una calle dada su dirección.
-     * @param ctxt El contexto de la actividad llamante.
      * @param calle La dirección a convertir a coordenadas.
      * @return Un objeto Address con detalles de la calle, o null si la calle no existe.
-     * @throws IOException Si hay algún error al acceder al servicio de geocoding o
-     *      calle es la cadena vacía.
      */
-    public static Address getAddressSync(Context ctxt, String calle) throws IOException {
+    public static Address getAddressSync(String calle) {
         if (calle != null && !calle.isEmpty()) {
-            Geocoder geocoder = new Geocoder(ctxt, Locale.getDefault());
-            List<Address> direcciones = geocoder.getFromLocationName(calle, 1);
-            if (direcciones != null && direcciones.size() > 0) {
-                return direcciones.get(0);
-            } else {
-                return null;
+            try {
+                GeocodingResult[] results = GeocodingApi.geocode(geoctxt, calle).await();
+                if (results != null && results.length > 0) {
+                    return geocodingResultToAddress(results[0]);
+                } else {
+                    return null;
+                }
+            } catch (IOException | ApiException | InterruptedException ex) {
+                throw new GeocodingException(ex);
             }
         } else {
             return null;
@@ -51,20 +52,28 @@ public class GeocodeUtils {
      * @param callbackError Método a ejecutar en caso de error del geocoder
      */
     public static void getAddress(Context ctxt, String calle,
-        Consumer<Address> callback, Consumer<IOException> callbackError) {
+        Consumer<Address> callback, Consumer<Exception> callbackError) {
         if (calle != null && !calle.isEmpty()) {
+            Activity activity = ((Activity)ctxt);
             new Thread(
                 () -> {
                     try {
-                        Geocoder geocoder = new Geocoder(ctxt, Locale.getDefault());
-                        List<Address> direcciones = geocoder.getFromLocationName(calle, 1);
-                        if (direcciones != null && direcciones.size() > 0) {
-                            callback.accept(direcciones.get(0));
-                        } else {
-                            callback.accept(null);
-                        }
-                    } catch (IOException ex) {
-                        callbackError.accept(ex);
+                        GeocodingResult[] results = GeocodingApi.geocode(geoctxt, calle).await();
+                        activity.runOnUiThread(
+                            () -> {
+                                if (results != null && results.length > 0) {
+                                    callback.accept(geocodingResultToAddress(results[0]));
+                                } else {
+                                    callback.accept(null);
+                                }
+                            }
+                        );
+                    } catch (IOException | ApiException | InterruptedException ex) {
+                        activity.runOnUiThread(
+                            () -> {
+                                callbackError.accept(ex);
+                            }
+                        );
                     }
                 }
             ).start();
@@ -92,6 +101,15 @@ public class GeocodeUtils {
                 target.setText(R.string.error_calle_no_comprobada);
             }
         );
+    }
+
+    private static Address geocodingResultToAddress(GeocodingResult res) {
+        LatLng location = res.geometry.location;
+        Address addr = new Address(Locale.getDefault());
+        addr.setLatitude(location.lat);
+        addr.setLongitude(location.lng);
+        addr.setAddressLine(0, res.formattedAddress);
+        return addr;
     }
 
 }
