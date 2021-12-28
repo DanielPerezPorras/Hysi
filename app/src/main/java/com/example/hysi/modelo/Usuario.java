@@ -17,6 +17,7 @@ public class Usuario {
     private final String usuario;
     private final String password;
     private final String calle;
+    private String email;
 
     private Usuario(int id, String usuario, String password, String calle) {
         this.id = id;
@@ -138,6 +139,30 @@ public class Usuario {
             throw new ConsultaBDException(ex);
         }
     }
+
+
+    public static String getEmailByID(int id) {
+        try {
+            Connection conex = BaseDatos.getConexion();
+
+            PreparedStatement stmt = conex.prepareStatement(
+                    "select u.email from usuario u, anuncio a where u.id = a.autor and a.id = ?");
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            String email = null;
+
+            if (rs.next())
+                email = rs.getString("email");
+
+            BaseDatos.cerrarConexion();
+            return email;
+
+        } catch(SQLException ex){
+            throw new ConsultaBDException(ex);
+        }
+
+    }
+
 
     public int getId() {
         return id;

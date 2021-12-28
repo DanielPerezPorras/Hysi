@@ -41,6 +41,20 @@
     <string name="main_anyadir">Announce</string>
     <string name="main_perfil">My Profile</string>
 
+
+    <!-- Textos del fragment lista_objetos -->
+    <string name="boton_filtrar">Filter</string>
+
+
+    <!-- Textos del AnuncioActivity-->
+    <string name="contactar">Contact</string>
+    <string name="autor">Owner</string>
+    <string name="descripcion">Description</string>
+    <string name="categoria">Category</string>
+    <string name="loperdien">Where did you lose it?</string>
+    <string name="dejaren">When found, leave it here</string>
+
+
     <!-- Textos de la pantalla «Añadir anuncio» -->
     <string name="anyadir_anuncio_titulo">New Announcement</string>
     <string name="anyadir_anuncio_campo_titulo">Title</string>

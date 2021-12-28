@@ -42,6 +42,18 @@
     <string name="main_anyadir">Anunciar</string>
     <string name="main_perfil">Mi perfil</string>
 
+
+    <!-- Textos del fragment lista_objetos -->
+    <string name="boton_filtrar">Filtrar</string>
+
+    <!-- Textos del AnuncioActivity-->
+    <string name="contactar">Contactar</string>
+    <string name="autor">Autor</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="categoria">Categoria</string>
+    <string name="loperdien">Lo perdi en</string>
+    <string name="dejaren">Dejar en</string>
+
     <!-- Textos de la pantalla «Añadir anuncio» -->
     <string name="anyadir_anuncio_titulo">Nuevo anuncio</string>
     <string name="anyadir_anuncio_campo_titulo">Título</string>
@@ -51,11 +63,13 @@
     <string name="anyadir_anuncio_categoria">Categoría</string>
     <string name="anyadir_anuncio_anyadir">Crear anuncio</string>
 
+
     <!-- Títulos de las actividades -->
     <string name="title_activity_main">Bienvenido a Hysi</string>
     <string name="title_anyadir_anuncio">Crear nuevo anuncio</string>
     <string name="title_activity_mapa">MapaActivity</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

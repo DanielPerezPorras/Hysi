@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".actividades.AnuncioActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearGeneral"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.008"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.001">
+
+
+            <TextView
+                android:id="@+id/tTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/anyadir_anuncio_titulo"
+                android:textAlignment="center"
+                android:textSize="34sp"
+                tools:text="Titulo" />
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/autor"
+                    android:textSize="20dp"
+                    tools:layout_editor_absoluteX="95dp"
+                    tools:layout_editor_absoluteY="89dp" />
+
+                <TextView
+                    android:id="@+id/tAutor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="..."
+                    android:textSize="20dp"
+                    tools:layout_editor_absoluteX="95dp"
+                    tools:layout_editor_absoluteY="89dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/categoria"
+                    android:textSize="20dp"
+                    tools:layout_editor_absoluteX="95dp"
+                    tools:layout_editor_absoluteY="89dp" />
+
+                <TextView
+                    android:id="@+id/tCategoria"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="..."
+                    android:textSize="20dp"
+                    tools:layout_editor_absoluteX="95dp"
+                    tools:layout_editor_absoluteY="89dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/descripcion"
+                    android:textSize="20dp"
+                    tools:layout_editor_absoluteX="95dp"
+                    tools:layout_editor_absoluteY="89dp" />
+
+                <TextView
+                    android:id="@+id/tDescripcion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="10dp"
+                    android:text="DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN  "
+                    android:textSize="15dp"
+                    tools:layout_editor_absoluteX="95dp"
+                    tools:layout_editor_absoluteY="89dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/loperdien"
+                    android:textSize="20dp"
+                    tools:layout_editor_absoluteX="144dp"
+                    tools:layout_editor_absoluteY="205dp" />
+
+                <TextView
+                    android:id="@+id/tPerdi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="..."
+                    android:textSize="15dp"
+                    tools:layout_editor_absoluteX="95dp"
+                    tools:layout_editor_absoluteY="89dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/dejaren"
+                    android:textSize="20dp"
+                    tools:layout_editor_absoluteX="144dp"
+                    tools:layout_editor_absoluteY="205dp" />
+
+                <TextView
+                    android:id="@+id/tDejar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="30dp"
+                    android:text="..."
+                    android:textSize="15dp"
+                    tools:layout_editor_absoluteX="95dp"
+                    tools:layout_editor_absoluteY="89dp" />
+
+
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/bContactar"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="120dp"
+                android:layout_marginTop="30dp"
+                android:text="@string/contactar"
+                tools:layout_editor_absoluteX="79dp"
+                tools:layout_editor_absoluteY="447dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
