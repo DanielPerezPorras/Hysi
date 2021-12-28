@@ -3,22 +3,30 @@ package com.example.hysi.actividades;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.location.Address;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.example.hysi.R;
 import com.example.hysi.modelo.Anuncio;
+import com.example.hysi.modelo.GeocodeUtils;
+import com.example.hysi.modelo.SingletonMap;
+import com.example.hysi.modelo.Usuario;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.GeoApiContext;
 
 import java.util.ArrayList;
 
 public class MapaFragment extends Fragment {
+
+    private Usuario usuarioActual = (Usuario)SingletonMap.getInstance().get("session");
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -38,15 +46,20 @@ public class MapaFragment extends Fragment {
 
             ArrayList<Anuncio> anuncios = Anuncio.getLatitudLongitudTitulo();
 
-            for(Anuncio i : anuncios){
+            Address addr = GeocodeUtils.getAddressSync(usuarioActual.getCalle());
+            LatLng latlngUsuario = new LatLng(addr.getLatitude(), addr.getLongitude());
+
+            for (Anuncio i : anuncios){
                 LatLng newPushPin = new LatLng(i.getLatitud(), i.getLongitud());
                 googleMap.addMarker(new MarkerOptions().position(newPushPin).title(i.getTitulo()));
                 System.out.println("Latitud:" + i.getLatitud() + " Longitud: " + i.getLongitud());
             }
 
-            // googleMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(anuncios.get(anuncios.size()-1).getLatitud(), anuncios.get(anuncios.size()-1).getLongitud())));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(latlngUsuario));
+            googleMap.moveCamera(CameraUpdateFactory.zoomTo(14));
 
         }
+
     };
 
     @Nullable
