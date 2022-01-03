@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hysi">
+    package="com.example.hysi" >
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -15,7 +15,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Hysi">
+        android:theme="@style/Theme.Hysi" >
+        <activity
+            android:name=".actividades.ListaObjetosPersonalesFragment"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.ConfigurarEmailFragment"
+            android:exported="false" />
         <activity
             android:name=".actividades.AnuncioActivity"
             android:exported="false" />
@@ -44,7 +50,7 @@
             android:exported="false" />
         <activity
             android:name=".actividades.LoginActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

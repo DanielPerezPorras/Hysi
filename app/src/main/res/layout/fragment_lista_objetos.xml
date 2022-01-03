@@ -28,7 +28,7 @@
 
                 <EditText
                     android:id="@+id/txt_filtro"
-                    android:layout_width="300dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
@@ -36,18 +36,30 @@
 
                 <Spinner
                     android:id="@+id/spinner_filtro"
-                    android:layout_width="300dp"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/btn_dropdown"
                     android:spinnerMode="dropdown" />
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/bFiltrar"
+            <LinearLayout
+                android:id="@+id/linear_botones"
                 android:layout_width="match_parent"
-                android:layout_height="98dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <Button
+                android:id="@+id/bFiltrarNombres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="@string/boton_filtrar" />
+            <Button
+                android:id="@+id/bFiltrarAmbos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/boton_filtrar_todo" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

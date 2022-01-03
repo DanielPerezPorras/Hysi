@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class ListaObjetosFragment extends Fragment {
 
-    Button bFiltrar;
+    Button bFiltrarNombre, bFiltrarCategoria;
     LinearLayout lObjetos, lGeneral;
     EditText tTexto;
     Spinner spin;
@@ -41,27 +41,32 @@ public class ListaObjetosFragment extends Fragment {
         tTexto = (EditText) vista.findViewById(R.id.txt_filtro);
         spin = (Spinner) vista.findViewById(R.id.spinner_filtro);
 
-        bFiltrar = (Button) vista.findViewById(R.id.bFiltrar);
-        bFiltrar.setOnClickListener(v -> realizarFiltrado());
+        bFiltrarCategoria = (Button) vista.findViewById(R.id.bFiltrarAmbos);
+        bFiltrarCategoria.setOnClickListener(v -> realizarFiltradoCompleto());
 
+        bFiltrarNombre = (Button) vista.findViewById(R.id.bFiltrarNombres);
+        bFiltrarNombre.setOnClickListener(v -> realizarFiltrado());
 
     }
 
-    private void realizarFiltrado() {
-        //TODO: hacer filtrado
-
+    private void realizarFiltradoCompleto() {
         lObjetos.removeAllViews();
-
-        // Categoria.findById(Integer.valueOf(spin.getSelectedItem().toString())).getNombre()
 
         ArrayList<Anuncio> anuncios = Anuncio.listadoAnunciosFiltrado(spin.getSelectedItem().toString(),tTexto.getText().toString());
         for(int i = 0; i < anuncios.size();i++){
             Anuncio aux = anuncios.get(i);
             inflarObjeto(i,aux.getID(),aux.getTitulo(),aux.getAutor(),aux.getDescripcion(),aux.getLo_perdi_en(),aux.getDejar_en(),aux.getCategoria());
         }
+    }
 
+    private void realizarFiltrado() {
+        lObjetos.removeAllViews();
 
-
+        ArrayList<Anuncio> anuncios = Anuncio.listadoAnunciosFiltradoSoloNombre(tTexto.getText().toString());
+        for(int i = 0; i < anuncios.size();i++){
+            Anuncio aux = anuncios.get(i);
+            inflarObjeto(i,aux.getID(),aux.getTitulo(),aux.getAutor(),aux.getDescripcion(),aux.getLo_perdi_en(),aux.getDejar_en(),aux.getCategoria());
+        }
     }
 
     public void rellenarSpinner(){
@@ -123,6 +128,9 @@ public class ListaObjetosFragment extends Fragment {
     private void irAnuncio(int sID,String sTitulo, String sAutor, String sDescripcion, String sPerdi, String sDejar, String sCategoria) {
         Intent intent = new Intent(getContext(), AnuncioActivity.class);
 
+        boolean vengoDePerfil = false;
+
+        intent.putExtra("vengoDePerfil",vengoDePerfil);
         intent.putExtra("id",sID);
         intent.putExtra("autor",sAutor);
         intent.putExtra("titulo",sTitulo);

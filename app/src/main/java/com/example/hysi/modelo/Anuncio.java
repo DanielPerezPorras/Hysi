@@ -236,7 +236,40 @@ public class Anuncio {
 
         try {
             Connection conex = BaseDatos.getConexion();
-            PreparedStatement stmt = conex.prepareStatement("SELECT A.id,A.titulo, U.usuario, A.descripcion, C.nombre 'Categoria', A.dejar_en, A.lo_perdi_en FROM ANUNCIO A,CATEGORIA C,USUARIO U WHERE A.autor = U.id AND A.categoria = C.id;");
+            PreparedStatement stmt = conex.prepareStatement("SELECT A.id,A.titulo, U.usuario, A.descripcion, C.nombre 'Categoria', A.dejar_en, A.lo_perdi_en FROM ANUNCIO A,CATEGORIA C,USUARIO U WHERE A.autor = U.id AND A.categoria = C.id  AND A.resuelto = 0");
+
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Anuncio> anuncios = new ArrayList<>();
+
+            while(rs.next()){
+                Anuncio a = new Anuncio(
+                        rs.getInt("id"),
+                        rs.getString("usuario"),
+                        rs.getString("titulo"),
+                        rs.getString("descripcion"),
+                        rs.getString("dejar_en"),
+                        rs.getString("lo_perdi_en"),
+                        rs.getString("categoria"));
+                anuncios.add(a);
+            }
+
+            BaseDatos.cerrarConexion();
+
+            return anuncios;
+
+
+        } catch (SQLException ex) {
+            throw new ConsultaBDException (ex);
+        }
+    }
+
+    public static ArrayList<Anuncio> listadoAnunciosByID(int id){
+
+        try {
+            Connection conex = BaseDatos.getConexion();
+            PreparedStatement stmt = conex.prepareStatement("SELECT A.id,A.titulo, U.usuario, A.descripcion, C.nombre 'Categoria', A.dejar_en, A.lo_perdi_en FROM ANUNCIO A,CATEGORIA C,USUARIO U WHERE A.autor = U.id AND A.categoria = C.id AND A.autor = ?;");
+
+            stmt.setInt(1, id);
 
             ResultSet rs = stmt.executeQuery();
             ArrayList<Anuncio> anuncios = new ArrayList<>();
@@ -267,9 +300,9 @@ public class Anuncio {
 
         try {
             Connection conex = BaseDatos.getConexion();
-            PreparedStatement stmt = conex.prepareStatement("SELECT A.ID,A.titulo, A.descripcion, C.nombre 'Categoria', A.dejar_en, A.lo_perdi_en FROM ANUNCIO A \n" +
+            PreparedStatement stmt = conex.prepareStatement("SELECT A.ID,A.titulo, A.descripcion, C.nombre 'Categoria', A.dejar_en, A.lo_perdi_en, U.usuario FROM ANUNCIO A \n" +
                     "LEFT JOIN CATEGORIA C ON A.categoria = C.id LEFT JOIN USUARIO U ON U.id = a.autor \n" +
-                    "WHERE C.nombre = ? OR U.usuario = ? OR A.titulo = ?");
+                    "WHERE resuelto = 0 AND (C.nombre = ? OR U.usuario = ? OR A.titulo = ?)");
 
             stmt.setString(1, spinner);
             stmt.setString(2, texto);
@@ -302,6 +335,45 @@ public class Anuncio {
     }
 
 
+    public static ArrayList<Anuncio> listadoAnunciosFiltradoSoloNombre(String  texto){
+
+        try {
+            Connection conex = BaseDatos.getConexion();
+            PreparedStatement stmt = conex.prepareStatement("SELECT A.ID,A.titulo, A.descripcion, C.nombre 'Categoria', A.dejar_en, A.lo_perdi_en, U.usuario FROM ANUNCIO A \n" +
+                    "LEFT JOIN CATEGORIA C ON A.categoria = C.id LEFT JOIN USUARIO U ON U.id = a.autor \n" +
+                    "WHERE resuelto = 0 AND (U.usuario = ? OR A.titulo = ?)");
+
+            stmt.setString(1, texto);
+            stmt.setString(2, texto);
+
+            ResultSet rs = stmt.executeQuery();
+            ArrayList<Anuncio> anuncios = new ArrayList<>();
+
+            while(rs.next()){
+                Anuncio a = new Anuncio(
+                        rs.getInt("id"),
+                        rs.getString("usuario"),
+                        rs.getString("titulo"),
+                        rs.getString("descripcion"),
+                        rs.getString("dejar_en"),
+                        rs.getString("lo_perdi_en"),
+                        rs.getString("categoria"));
+                anuncios.add(a);
+            }
+
+            BaseDatos.cerrarConexion();
+
+            return anuncios;
+
+
+        } catch (SQLException ex) {
+            throw new ConsultaBDException (ex);
+        }
+
+    }
+
+
+
 
     public static ArrayList<Anuncio> getLatitudLongitudTitulo(){
 
@@ -327,9 +399,74 @@ public class Anuncio {
         }
     }
 
+    public static void encontrado (int id) {
+        try {
+            Connection conex = BaseDatos.getConexion();
+
+            PreparedStatement stmt = conex.prepareStatement(
+                    "UPDATE anuncio SET resuelto = 1 WHERE ID = ?");
+            stmt.setInt(1, id);
+
+            stmt.executeUpdate();
+
+            BaseDatos.cerrarConexion();
+
+        } catch(SQLException ex){
+            throw new ConsultaBDException(ex);
+        }
+
+    }
+
+    public static int estaEncontrado(int id) {
+
+        try {
+            Connection conex = BaseDatos.getConexion();
+            PreparedStatement stmt = conex.prepareStatement("SELECT resuelto FROM anuncio WHERE id = ? ");
+
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+            int encontrado = -1;
+
+            if(rs.next())
+                encontrado = rs.getInt("resuelto");
+
+            BaseDatos.cerrarConexion();
+
+            return encontrado;
 
 
+        } catch (SQLException ex) {
+            throw new ConsultaBDException (ex);
+        }
 
+    }
+
+    public static boolean noTieneEmailAutor(int id) {
+
+        try {
+            Connection conex = BaseDatos.getConexion();
+            PreparedStatement stmt = conex.prepareStatement("select u.email from usuario u, anuncio a where a.autor = u.id and a.id = ?");
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+            String email = "";
+
+            if(rs.next()){
+                email = rs.getString("email");
+            }
+
+
+            BaseDatos.cerrarConexion();
+
+            return (email == null || email.isEmpty());
+
+
+        } catch (SQLException ex) {
+            throw new ConsultaBDException (ex);
+        }
+
+    }
 
 
     public String getAutor() {

@@ -163,6 +163,27 @@ public class Usuario {
 
     }
 
+    public static void updateEmail(int id, String email) {
+        try {
+            Connection conex = BaseDatos.getConexion();
+
+            PreparedStatement stmt = conex.prepareStatement(
+                    "UPDATE usuario SET email = ? WHERE ID = ?");
+            stmt.setString(1, email);
+            stmt.setInt(2, id);
+
+            stmt.executeUpdate();
+
+            BaseDatos.cerrarConexion();
+
+        } catch(SQLException ex){
+            throw new ConsultaBDException(ex);
+        }
+
+    }
+
+
+
 
     public int getId() {
         return id;

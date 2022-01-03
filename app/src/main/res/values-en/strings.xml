@@ -44,6 +44,7 @@
 
     <!-- Textos del fragment lista_objetos -->
     <string name="boton_filtrar">Filter</string>
+    <string name="boton_filtrar_todo">Both filters</string>
 
 
     <!-- Textos del AnuncioActivity-->
@@ -63,6 +64,22 @@
     <string name="anyadir_anuncio_dejar_en">When found, leave it here:</string>
     <string name="anyadir_anuncio_categoria">Category</string>
     <string name="anyadir_anuncio_anyadir">Create Announcement</string>
+
+
+    <!-- Textos perfil usuario -->
+    <string name="boton_email">Set email</string>
+    <string name="boton_lista_objetos">Objects list</string>
+    <string name="encontrado">Found</string>
+    <string name="anuncio_encontrado">Found object</string>
+
+    <!-- Textos configuracion email -->
+    <string name="introducir_email_1">Write your email</string>
+    <string name="introducir_email_2">Write again your email</string>
+    <string name="boton_email_introducir">Write</string>
+    <string name="titulo_email">Update your email</string>
+    <string name="errorEmail">Emails are different</string>
+    <string name="updateEmailCorrecto">Email updated</string>
+
 
     <!-- Títulos de las actividades -->
     <string name="title_activity_main">Welcome to Hysi</string>
