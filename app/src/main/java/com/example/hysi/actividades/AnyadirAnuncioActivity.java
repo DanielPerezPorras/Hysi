@@ -93,7 +93,7 @@ public class AnyadirAnuncioActivity extends Activity {
                 Anuncio a = Anuncio.crear(
                         etTitulo.getText().toString(),
                         etDescripcion.getText().toString(),
-                        loPerdiEn, dejarEn,
+                        dejarEn, loPerdiEn,
                         etCategoria.getSelectedItem().toString() );
                 irAPrincipal();
             }
