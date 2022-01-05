@@ -23,6 +23,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.GeoApiContext;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.StringJoiner;
 
 public class MapaFragment extends Fragment {
 
@@ -44,15 +48,30 @@ public class MapaFragment extends Fragment {
         @Override
         public void onMapReady(GoogleMap googleMap) {
 
-            ArrayList<Anuncio> anuncios = Anuncio.getLatitudLongitudTitulo();
-
             Address addr = GeocodeUtils.getAddressSync(usuarioActual.getCalle());
             LatLng latlngUsuario = new LatLng(addr.getLatitude(), addr.getLongitude());
 
+            ArrayList<Anuncio> anuncios = Anuncio.getLatitudLongitudTitulo();
+            Map<LatLng, List<String>> chinchetas = new HashMap<>();
             for (Anuncio i : anuncios){
-                LatLng newPushPin = new LatLng(i.getLatitud(), i.getLongitud());
-                googleMap.addMarker(new MarkerOptions().position(newPushPin).title(i.getTitulo()));
-                System.out.println("Latitud:" + i.getLatitud() + " Longitud: " + i.getLongitud());
+                LatLng pin = new LatLng(i.getLatitud(), i.getLongitud());
+                if (chinchetas.containsKey(pin)) {
+                    List<String> nuevaLista = chinchetas.get(pin);
+                    nuevaLista.add(i.getTitulo());
+                } else {
+                    List<String> nuevaLista = new ArrayList<>();
+                    nuevaLista.add(i.getTitulo());
+                    chinchetas.put(pin, nuevaLista);
+                }
+            }
+
+            for (LatLng newPushPin : chinchetas.keySet()){
+                List<String> titles = chinchetas.get(newPushPin);
+                StringJoiner joiner = new StringJoiner(", ");
+                for (String s : titles) {
+                    joiner.add(s);
+                }
+                googleMap.addMarker(new MarkerOptions().position(newPushPin).title(joiner.toString()));
             }
 
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(latlngUsuario));
