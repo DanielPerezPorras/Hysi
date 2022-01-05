@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actividades.ConfigurarEmailFragment">
+    tools:context=".actividades.ConfigurarEmailActivity">
 
 
     <ScrollView
@@ -16,85 +16,71 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <TextView
-            android:id="@+id/txtTituloRegistro2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="@string/titulo_email"
-            android:textAlignment="center"
-            android:textSize="34sp" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/outer_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:focusableInTouchMode="true"
+            android:focusable="true">
 
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="100dp"
-            android:textSize="25dp"
-            android:text="@string/introducir_email_1" />
-
-
-        <EditText
-            android:id="@+id/tEmail1"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="15dp"
-            android:autoSizeTextType="uniform"
-            android:inputType="textPersonName"
-            android:textSize="15dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="50dp"
-            android:textSize="25dp"
-            android:text="@string/introducir_email_2" />
+            <TextView
+                android:id="@+id/txtTituloRegistro2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="64dp"
+                android:text="@string/titulo_email"
+                android:textAlignment="center"
+                android:textSize="34sp" />
 
 
-        <EditText
-            android:id="@+id/tEmail2"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:autoSizeTextType="uniform"
-            android:inputType="textPersonName"
-            android:textSize="15dp" />
-
-        <Button
-            android:id="@+id/bIntroducirEmail"
-            android:layout_marginLeft="135dp"
-            android:layout_marginTop="40dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="@string/boton_email_introducir" />
-
-        <TextView
-            android:id="@+id/tError"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="70dp"
-            android:textSize="25dp"
-            android:textColor="@color/rojo"
-            android:text="@string/errorEmail" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/introducir_email_1" />
 
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/tEmail1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/introducir_email_2" />
+
+
+            <EditText
+                android:id="@+id/tEmail2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:inputType="textEmailAddress"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Button
+                android:id="@+id/bIntroducirEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="64sp"
+
+                android:text="@string/boton_email_introducir" />
+
+
+        </LinearLayout>
 
 
     </ScrollView>

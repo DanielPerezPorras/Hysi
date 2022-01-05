@@ -24,21 +24,22 @@
                 android:id="@+id/linear_filtro_interno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_weight="1"
+                android:focusable="true"
                 android:focusableInTouchMode="true"
-                android:focusable="true">
+                android:orientation="vertical">
 
                 <EditText
                     android:id="@+id/txt_filtro"
-                    android:layout_width="250dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPersonName"
+                    android:inputType="text"
                     android:minHeight="48dp" />
 
                 <Spinner
                     android:id="@+id/spinner_filtro"
-                    android:layout_width="250dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:drawable/btn_dropdown"
                     android:spinnerMode="dropdown" />
@@ -47,19 +48,22 @@
 
             <LinearLayout
                 android:id="@+id/linear_botones"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
                 android:orientation="vertical">
-            <Button
-                android:id="@+id/bFiltrarNombres"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/boton_filtrar" />
-            <Button
-                android:id="@+id/bFiltrarAmbos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/boton_filtrar_todo" />
+
+                <Button
+                    android:id="@+id/bFiltrarNombres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/boton_filtrar" />
+
+                <Button
+                    android:id="@+id/bFiltrarAmbos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/boton_filtrar_todo" />
 
             </LinearLayout>
 

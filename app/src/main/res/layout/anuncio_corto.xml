@@ -9,7 +9,9 @@
         android:id="@+id/linearGeneralCorto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
         android:orientation="vertical"
+        android:padding="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,9 +22,8 @@
             android:id="@+id/tTituloCorto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
             android:text="@string/anyadir_anuncio_titulo"
-            android:textSize="34sp"
+            android:textSize="24sp"
             tools:text="Titulo" />
 
         <LinearLayout
@@ -36,11 +37,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginLeft="30dp"
-                android:text="AUTOR"
-                android:textSize="20dp"
+                android:layout_weight="1"
+                android:text="@string/autor"
+                android:textSize="16sp"
                 tools:layout_editor_absoluteX="95dp"
-                tools:layout_editor_absoluteY="89dp"  />
+                tools:layout_editor_absoluteY="89dp" />
 
             <TextView
                 android:id="@+id/tCategoriaCorto"
@@ -48,12 +49,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
-                android:text="CATEGORIA"
-                android:textSize="20dp"
+                android:text="@string/anyadir_anuncio_categoria"
+                android:textSize="16sp"
                 tools:layout_editor_absoluteX="95dp"
-                tools:layout_editor_absoluteY="89dp" />
+                tools:layout_editor_absoluteY="89dp"
+                tools:layout_weight="0" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/tYaEncontrado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:background="@color/green"
+            android:text="@string/ya_encontrado"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

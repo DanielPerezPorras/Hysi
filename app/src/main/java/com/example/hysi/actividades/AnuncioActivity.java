@@ -2,7 +2,6 @@ package com.example.hysi.actividades;
 
 import com.example.hysi.R;
 import com.example.hysi.modelo.Anuncio;
-import com.example.hysi.modelo.SingletonMap;
 import com.example.hysi.modelo.Usuario;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -90,7 +89,7 @@ public class AnuncioActivity extends AppCompatActivity {
 
         String enviarasunto = "He encontrado tu \"" + getIntent().getExtras().getString("titulo") + "\"";
 
-        String enviarcorreo = Usuario.getEmailByID(id);
+        String enviarcorreo = Usuario.getEmailByIdAnuncio(id);
 
         // Defino los Strings Email, Asunto y Mensaje con la función putExtra
         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{enviarcorreo});

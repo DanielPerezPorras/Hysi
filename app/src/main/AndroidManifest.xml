@@ -17,10 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Hysi" >
         <activity
-            android:name=".actividades.ListaObjetosPersonalesFragment"
+            android:name=".actividades.ListaObjetosPersonalesActivity"
             android:exported="false" />
         <activity
-            android:name=".actividades.ConfigurarEmailFragment"
+            android:name=".actividades.ConfigurarEmailActivity"
             android:exported="false" />
         <activity
             android:name=".actividades.AnuncioActivity"
@@ -38,13 +38,8 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".actividades.MapaFragment"
-            android:exported="false"
-            android:label="@string/title_activity_mapa" />
-        <activity
             android:name=".actividades.MainActivity"
-            android:exported="false"
-            android:label="@string/title_activity_main" />
+            android:exported="false" />
         <activity
             android:name=".actividades.RegistroActivity"
             android:exported="false" />
@@ -59,8 +54,7 @@
         </activity>
         <activity
             android:name=".actividades.AnyadirAnuncioActivity"
-            android:exported="false"
-            android:label="@string/title_anyadir_anuncio" />
+            android:exported="false" />
     </application>
 
 </manifest>

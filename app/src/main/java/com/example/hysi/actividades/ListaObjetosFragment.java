@@ -1,8 +1,6 @@
 package com.example.hysi.actividades;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
@@ -31,20 +29,27 @@ public class ListaObjetosFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
-
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View vista = inflater.inflate(R.layout.fragment_lista_objetos, container, false);
+        enlazarControles(vista);
+        rellenarSpinner();
+        mostrarObjetos();
+        return vista;
     }
 
     private void enlazarControles(View vista) {
 
-        lObjetos = (LinearLayout) vista.findViewById(R.id.linear_objetos);
-        tTexto = (EditText) vista.findViewById(R.id.txt_filtro);
-        spin = (Spinner) vista.findViewById(R.id.spinner_filtro);
+        lObjetos = vista.findViewById(R.id.linear_objetos);
+        tTexto = vista.findViewById(R.id.txt_filtro);
+        spin = vista.findViewById(R.id.spinner_filtro);
 
-        bFiltrarCategoria = (Button) vista.findViewById(R.id.bFiltrarAmbos);
+        bFiltrarCategoria = vista.findViewById(R.id.bFiltrarAmbos);
         bFiltrarCategoria.setOnClickListener(v -> realizarFiltradoCompleto());
 
-        bFiltrarNombre = (Button) vista.findViewById(R.id.bFiltrarNombres);
+        bFiltrarNombre = vista.findViewById(R.id.bFiltrarNombres);
         bFiltrarNombre.setOnClickListener(v -> realizarFiltrado());
 
     }
@@ -55,7 +60,7 @@ public class ListaObjetosFragment extends Fragment {
         ArrayList<Anuncio> anuncios = Anuncio.listadoAnunciosFiltrado(spin.getSelectedItem().toString(),tTexto.getText().toString());
         for(int i = 0; i < anuncios.size();i++){
             Anuncio aux = anuncios.get(i);
-            inflarObjeto(i,aux.getID(),aux.getTitulo(),aux.getAutor(),aux.getDescripcion(),aux.getLo_perdi_en(),aux.getDejar_en(),aux.getCategoria());
+            inflarObjeto(aux.getID(),aux.getTitulo(),aux.getAutor(),aux.getDescripcion(),aux.getLo_perdi_en(),aux.getDejar_en(),aux.getCategoria());
         }
     }
 
@@ -65,7 +70,7 @@ public class ListaObjetosFragment extends Fragment {
         ArrayList<Anuncio> anuncios = Anuncio.listadoAnunciosFiltradoSoloNombre(tTexto.getText().toString());
         for(int i = 0; i < anuncios.size();i++){
             Anuncio aux = anuncios.get(i);
-            inflarObjeto(i,aux.getID(),aux.getTitulo(),aux.getAutor(),aux.getDescripcion(),aux.getLo_perdi_en(),aux.getDejar_en(),aux.getCategoria());
+            inflarObjeto(aux.getID(),aux.getTitulo(),aux.getAutor(),aux.getDescripcion(),aux.getLo_perdi_en(),aux.getDejar_en(),aux.getCategoria());
         }
     }
 
@@ -93,67 +98,41 @@ public class ListaObjetosFragment extends Fragment {
 
         for(int i = 0; i < anuncios.size();i++){
             Anuncio aux = anuncios.get(i);
-            inflarObjeto(i,aux.getID(),aux.getTitulo(),aux.getAutor(),aux.getDescripcion(),aux.getLo_perdi_en(),aux.getDejar_en(),aux.getCategoria());
+            inflarObjeto(aux.getID(), aux.getTitulo(), aux.getAutor(), aux.getDescripcion(),
+                    aux.getLo_perdi_en(), aux.getDejar_en(), aux.getCategoria());
         }
 
     }
 
-    @SuppressLint("ResourceAsColor")
-    private void inflarObjeto(int i,int id, String sTitulo, String sAutor, String sDescripcion, String sPerdi, String sDejar, String sCategoria){
-
+    private void inflarObjeto(int id, String sTitulo, String sAutor, String sDescripcion, String sPerdi, String sDejar, String sCategoria){
         View vi = getLayoutInflater().inflate(R.layout.anuncio_corto,null);
 
-        TextView titulo = (TextView) vi.findViewById(R.id.tTituloCorto);
-        TextView autor = (TextView) vi.findViewById(R.id.tAutorCorto);
-        TextView categoria = (TextView) vi.findViewById(R.id.tCategoriaCorto);
-        lGeneral = (LinearLayout) vi.findViewById(R.id.linearGeneralCorto);
+        TextView titulo = vi.findViewById(R.id.tTituloCorto);
+        TextView autor = vi.findViewById(R.id.tAutorCorto);
+        TextView categoria = vi.findViewById(R.id.tCategoriaCorto);
+        TextView yaEncontrado = vi.findViewById(R.id.tYaEncontrado);
+        lGeneral = vi.findViewById(R.id.linearGeneralCorto);
 
         titulo.setText(sTitulo);
         autor.setText(sAutor);
         categoria.setText(sCategoria);
+        lGeneral.removeView(yaEncontrado);
 
-        if(i % 2 == 0)
-            lGeneral.setBackgroundColor(Color.parseColor("#FFFCE792"));
-        else
-            lGeneral.setBackgroundColor(Color.parseColor("#FFFDED"));
-
-        vi.setOnClickListener(v -> irAnuncio( id,sTitulo,  sAutor,  sDescripcion,  sPerdi,  sDejar,  sCategoria));
-
-
-
+        vi.setOnClickListener(v -> irAnuncio(id, sTitulo, sAutor, sDescripcion, sPerdi, sDejar, sCategoria));
         lObjetos.addView(vi);
-
     }
 
     private void irAnuncio(int sID,String sTitulo, String sAutor, String sDescripcion, String sPerdi, String sDejar, String sCategoria) {
         Intent intent = new Intent(getContext(), AnuncioActivity.class);
-
-        boolean vengoDePerfil = false;
-
-        intent.putExtra("vengoDePerfil",vengoDePerfil);
-        intent.putExtra("id",sID);
-        intent.putExtra("autor",sAutor);
-        intent.putExtra("titulo",sTitulo);
-        intent.putExtra("descripcion",sDescripcion);
-        intent.putExtra("perdi",sPerdi);
-        intent.putExtra("dejar",sDejar);
-        intent.putExtra("categoria",sCategoria);
-
+        intent.putExtra("vengoDePerfil", false);
+        intent.putExtra("id", sID);
+        intent.putExtra("autor", sAutor);
+        intent.putExtra("titulo", sTitulo);
+        intent.putExtra("descripcion", sDescripcion);
+        intent.putExtra("perdi", sPerdi);
+        intent.putExtra("dejar", sDejar);
+        intent.putExtra("categoria", sCategoria);
         startActivity(intent);
     }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View vista = inflater.inflate(R.layout.fragment_lista_objetos, container, false);
-
-        enlazarControles(vista);
-        rellenarSpinner();
-        mostrarObjetos();
-
-        return vista;
-
-    }
-
 
 }

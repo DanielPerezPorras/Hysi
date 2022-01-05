@@ -2,9 +2,11 @@
 <resources>
     <color name="yellow_dark">#6C5700</color>
     <color name="yellow">#FFFCE792</color>
-    <color name="yellow_pale">#FFFDED</color>
+    <color name="yellow_pale">#FFFDED</color>ç
+    <color name="orange_lighter">#FFCAA4</color>
     <color name="orange_light">#FFFFB17A</color>
     <color name="orange">#FF832B</color>
+    <color name="green">#2F7E32</color>
     <color name="indigo">#FF4F4789</color>
     <color name="black">#FF000000</color>
     <color name="grey_light">#858585</color>

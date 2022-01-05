@@ -19,11 +19,12 @@ public class Usuario {
     private final String calle;
     private String email;
 
-    private Usuario(int id, String usuario, String password, String calle) {
+    private Usuario(int id, String usuario, String password, String calle, String email) {
         this.id = id;
         this.usuario = usuario;
         this.password = password;
         this.calle = calle;
+        this.email = email;
     }
 
     /**
@@ -44,7 +45,8 @@ public class Usuario {
                 resultado = new Usuario(id,
                         rs.getString("usuario"),
                         rs.getString("password"),
-                        rs.getString("calle"));
+                        rs.getString("calle"),
+                        rs.getString("email"));
             }
 
             BaseDatos.cerrarConexion();
@@ -74,7 +76,8 @@ public class Usuario {
                 resultado = new Usuario(rs.getInt("ID"),
                         usuario,
                         password,
-                        rs.getString("calle"));
+                        rs.getString("calle"),
+                        rs.getString("email"));
             }
 
             BaseDatos.cerrarConexion();
@@ -102,7 +105,8 @@ public class Usuario {
                 resultado = new Usuario(rs.getInt("id"),
                         usuario,
                         rs.getString("password"),
-                        rs.getString("calle"));
+                        rs.getString("calle"),
+                        rs.getString("email"));
             }
 
             BaseDatos.cerrarConexion();
@@ -131,7 +135,7 @@ public class Usuario {
             stmt.executeUpdate();
             ResultSet rskey = stmt.getGeneratedKeys();
             rskey.next();
-            Usuario resultado = new Usuario(rskey.getInt("id"), usuario, contrasenia, calle);
+            Usuario resultado = new Usuario(rskey.getInt("id"), usuario, contrasenia, calle, null);
 
             BaseDatos.cerrarConexion();
             return resultado;
@@ -141,7 +145,7 @@ public class Usuario {
     }
 
 
-    public static String getEmailByID(int id) {
+    public static String getEmailByIdAnuncio(int id) {
         try {
             Connection conex = BaseDatos.getConexion();
 
@@ -157,13 +161,13 @@ public class Usuario {
             BaseDatos.cerrarConexion();
             return email;
 
-        } catch(SQLException ex){
+        } catch (SQLException ex) {
             throw new ConsultaBDException(ex);
         }
 
     }
 
-    public static void updateEmail(int id, String email) {
+    public void updateEmail(String email) {
         try {
             Connection conex = BaseDatos.getConexion();
 
@@ -171,10 +175,10 @@ public class Usuario {
                     "UPDATE usuario SET email = ? WHERE ID = ?");
             stmt.setString(1, email);
             stmt.setInt(2, id);
-
             stmt.executeUpdate();
-
             BaseDatos.cerrarConexion();
+
+            this.email = email;
 
         } catch(SQLException ex){
             throw new ConsultaBDException(ex);
@@ -191,9 +195,7 @@ public class Usuario {
     public String getUsuario() {
         return usuario;
     }
-    public String getPassword() {
-        return password;
-    }
     public String getCalle() { return calle; }
+    public String getEmail() { return email; }
 
 }

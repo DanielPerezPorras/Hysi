@@ -8,54 +8,48 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/linearGeneral"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical"
+            android:padding="@dimen/outer_padding"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.008"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.001">
+            app:layout_constraintTop_toTopOf="parent">
 
 
             <TextView
                 android:id="@+id/tTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="32sp"
                 android:text="@string/anyadir_anuncio_titulo"
                 android:textAlignment="center"
                 android:textSize="34sp"
                 tools:text="Titulo" />
 
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" />
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="10dp"
                     android:text="@string/autor"
-                    android:textSize="20dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     tools:layout_editor_absoluteX="95dp"
                     tools:layout_editor_absoluteY="89dp" />
 
@@ -63,10 +57,9 @@
                     android:id="@+id/tAutor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="8dp"
                     android:text="..."
-                    android:textSize="20dp"
+                    android:textSize="16sp"
                     tools:layout_editor_absoluteX="95dp"
                     tools:layout_editor_absoluteY="89dp" />
 
@@ -74,18 +67,17 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
                     android:text="@string/categoria"
-                    android:textSize="20dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     tools:layout_editor_absoluteX="95dp"
                     tools:layout_editor_absoluteY="89dp" />
 
@@ -93,10 +85,9 @@
                     android:id="@+id/tCategoria"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="8dp"
                     android:text="..."
-                    android:textSize="20dp"
+                    android:textSize="16sp"
                     tools:layout_editor_absoluteX="95dp"
                     tools:layout_editor_absoluteY="89dp" />
 
@@ -104,18 +95,17 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
                     android:text="@string/descripcion"
-                    android:textSize="20dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     tools:layout_editor_absoluteX="95dp"
                     tools:layout_editor_absoluteY="89dp" />
 
@@ -123,11 +113,8 @@
                     android:id="@+id/tDescripcion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="30dp"
-                    android:layout_marginTop="10dp"
                     android:text="DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN DESCRIPCIÓN  "
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     tools:layout_editor_absoluteX="95dp"
                     tools:layout_editor_absoluteY="89dp" />
 
@@ -135,18 +122,17 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="10dp"
                     android:text="@string/loperdien"
-                    android:textSize="20dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     tools:layout_editor_absoluteX="144dp"
                     tools:layout_editor_absoluteY="205dp" />
 
@@ -154,10 +140,8 @@
                     android:id="@+id/tPerdi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="30dp"
                     android:text="..."
-                    android:textSize="15dp"
+                    android:textSize="16sp"
                     tools:layout_editor_absoluteX="95dp"
                     tools:layout_editor_absoluteY="89dp" />
 
@@ -165,18 +149,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="32dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginRight="10dp"
                     android:text="@string/dejaren"
-                    android:textSize="20dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
                     tools:layout_editor_absoluteX="144dp"
                     tools:layout_editor_absoluteY="205dp" />
 
@@ -184,10 +167,8 @@
                     android:id="@+id/tDejar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="30dp"
                     android:text="..."
-                    android:textSize="15dp"
+                    android:textSize="16sp"
                     tools:layout_editor_absoluteX="95dp"
                     tools:layout_editor_absoluteY="89dp" />
 
@@ -195,13 +176,10 @@
             </LinearLayout>
 
 
-
             <Button
                 android:id="@+id/bContactar"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="120dp"
-                android:layout_marginTop="30dp"
                 android:text="@string/contactar"
                 tools:layout_editor_absoluteX="79dp"
                 tools:layout_editor_absoluteY="447dp" />

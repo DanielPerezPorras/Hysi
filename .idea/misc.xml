@@ -3,32 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/activity_anuncio.xml" value="0.264" />
         <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/activity_anyadir_anuncio.xml" value="0.2" />
+        <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/activity_configurar_email.xml" value="0.21046077210460773" />
         <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/activity_mapa.xml" value="0.15921052631578947" />
         <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/activity_registro.xml" value="0.264" />
-        <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/fragment_lista_objetos.xml" value="0.4" />
+        <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/anuncio_corto.xml" value="0.4" />
+        <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/fragment_lista_objetos.xml" value="0.264" />
+        <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/fragment_lista_objetos_personales.xml" value="0.15921052631578947" />
         <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/fragment_mapa.xml" value="0.15921052631578947" />
-        <entry key="..\:/Users/andre/Downloads/PEMPOTRADOS/Hysi/app/src/main/res/layout/activity_anyadir_anuncio.xml" value="0.1793478260869565" />
-        <entry key="..\:/Users/andre/Downloads/PEMPOTRADOS/Hysi/app/src/main/res/layout/activity_login.xml" value="0.1793478260869565" />
-        <entry key="..\:/Users/andre/Downloads/PEMPOTRADOS/Hysi/app/src/main/res/layout/activity_registro.xml" value="0.1793478260869565" />
-        <entry key="..\:/Users/andre/Downloads/PEMPOTRADOS/Hysi/app/src/main/res/layout/fragment_lista_objetos.xml" value="0.1793478260869565" />
+        <entry key="..\:/CloudStation/02_Trabajo/IngenieriaSoftwareUMA/04_CuartoCurso/405_SSEDM/EjerciciosAndroid/Hysi/app/src/main/res/layout/fragment_perfil.xml" value="0.264" />
         <entry key="..\:/Users/andre/Downloads/PROYECTO_ANDROID_EMPOTRADOS/Hysi/app/src/main/res/layout/activity_anyadir_anuncio.xml" value="0.25" />
         <entry key="..\:/Users/andre/Downloads/PROYECTO_ANDROID_EMPOTRADOS/Hysi/app/src/main/res/layout/activity_login.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/andre/Downloads/PROYECTO_ANDROID_EMPOTRADOS/Hysi/app/src/main/res/layout/activity_main.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/andre/Downloads/PROYECTO_ANDROID_EMPOTRADOS/Hysi/app/src/main/res/layout/activity_registro.xml" value="0.23854166666666668" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/activity_anuncio.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/activity_anyadir_anuncio.xml" value="0.2640625" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/activity_configurar_email.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/activity_registro.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/anuncio_corto.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/fragment_lista_objetos.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/fragment_lista_objetos_personales.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/fragment_mapa.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/power/Desktop/git_prueba/Hysi/app/src/main/res/layout/fragment_perfil.xml" value="0.3066123188405797" />
       </map>
     </option>
   </component>

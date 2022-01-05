@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:minHeight="48dp" />
 
             <Space
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:minHeight="48dp" />
 
             <Space
@@ -84,6 +84,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/formato_direccion"
+                android:inputType="textPostalAddress"
                 android:minHeight="48dp" />
 
             <TextView
@@ -107,6 +108,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="@string/formato_direccion"
+                android:inputType="textPostalAddress"
                 android:minHeight="48dp" />
 
             <TextView

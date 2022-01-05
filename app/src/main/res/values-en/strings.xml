@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Hysi</string>
     <string name="app_subtitle">«Have You Seen It?»</string>
-    <string name="description">Find your lost objects and help others to find their own.</string>
+    <string name="description">Find your lost items and help others to find their own.</string>
     <string name="formato_direccion">Street, city</string>
 
     <!-- Errores varios -->
@@ -54,6 +54,7 @@
     <string name="categoria">Category</string>
     <string name="loperdien">Where did you lose it?</string>
     <string name="dejaren">When found, leave it here</string>
+    <string name="ya_encontrado">Item already found</string>
 
 
     <!-- Textos de la pantalla «Añadir anuncio» -->
@@ -67,22 +68,25 @@
 
 
     <!-- Textos perfil usuario -->
+    <string name="perfil_email_no_configurado">Email not set</string>
     <string name="boton_email">Set email</string>
-    <string name="boton_lista_objetos">Objects list</string>
-    <string name="encontrado">Found</string>
-    <string name="anuncio_encontrado">Found object</string>
+    <string name="boton_lista_objetos">Item list</string>
+    <string name="encontrado">Mark as found</string>
+    <string name="anuncio_encontrado">Object marked as found</string>
 
     <!-- Textos configuracion email -->
-    <string name="introducir_email_1">Write your email</string>
-    <string name="introducir_email_2">Write again your email</string>
-    <string name="boton_email_introducir">Write</string>
+    <string name="introducir_email_1">Email</string>
+    <string name="introducir_email_2">Confirm your email</string>
+    <string name="boton_email_introducir">Set my email</string>
     <string name="titulo_email">Update your email</string>
-    <string name="errorEmail">Emails are different</string>
+    <string name="error_email_vacio">Email is empty</string>
+    <string name="error_email_no_coincide">Emails do not match</string>
     <string name="updateEmailCorrecto">Email updated</string>
 
 
     <!-- Títulos de las actividades -->
     <string name="title_activity_main">Welcome to Hysi</string>
     <string name="title_anyadir_anuncio">Create new announcement</string>
+    <string name="title_activity_mapa">Item Map</string>
 
 </resources>
