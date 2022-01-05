@@ -99,6 +99,7 @@ public class GeocodeUtils {
                 }
             }, (exception) -> {
                 target.setText(R.string.error_calle_no_comprobada);
+                exception.printStackTrace();
             }
         );
     }
